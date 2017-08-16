@@ -1,0 +1,461 @@
+body{
+    padding: 80px 0 0 0 ;
+}
+img#logo {
+    width: auto;
+    height: 100%;
+}
+img.avatar{
+  margin-right: 2%;
+}
+
+/* Instructions example round */
+.exampleRound {
+  font-size: 15px;
+  margin-left: -2%;
+  margin-bottom: 0%;
+}
+li.exampleRound{
+  margin-bottom: 2%;
+}
+
+blockquote.instr {
+  font-size: 16px;
+  margin-bottom: 2%;
+}
+
+/*Instructions styling */
+button#submitQuiz #invisible{
+  visibility: hidden;
+}
+
+span.quiz {
+  font-weight:normal;
+}
+span.noresp{
+  visibility: hidden;
+}
+span.correct{
+  color: #00CC00;
+  font-weight: bold;
+}
+span.incorrect{
+  color: #FF0000;
+  font-weight: bold;
+}
+.alert{
+  padding: .5%;
+  font-weight: bold;
+}
+
+/* Lobby clock */
+#clock{
+  font-size: 20px;
+  font-weight:bold;
+  color:#2EBCED;
+}
+#clockInfo{
+  font-size: 14px;
+  font-weight:normal;
+  color:#2EBCED;
+}
+
+/* Player prompts during game */
+.well-text{
+  font-size:18px;
+  margin-top: 2%;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Contribution phase */
+#contributionSliderRow{
+  margin-top: 10%;
+}
+#contributionSubmit{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 10%;
+}
+.contributionText{
+  font-size: 20px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+/* Other player contributions phase */
+.neighborContributions{
+  text-align: center;
+  font-size: 20px;
+  font-weight: bolder;
+  list-style: none;
+  margin-top: 5%;
+}
+.neighborContributionsText{
+  margin-bottom: 2%;
+  text-align: center;
+}
+
+/* Messaging Phase */
+#messagePrompt{
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+#messagePrompt span{
+  font-size: 14px;
+  font-weight: normal;
+}
+
+#message-form:focus{
+  outline: 0px solid transparent;
+}
+
+
+/* Chat bubble */
+/* To handle long continous strings of text that extend outside a div */
+.message{
+  white-space: pre;           /* CSS 2.0 */
+  white-space: pre-wrap;      /* CSS 2.1 */
+  white-space: pre-line;      /* CSS 3.0 */
+  white-space: -pre-wrap;     /* Opera 4-6 */
+  white-space: -o-pre-wrap;   /* Opera 7 */
+  white-space: -moz-pre-wrap; /* Mozilla */
+  white-space: -hp-pre-wrap;  /* HP Printers */
+  word-wrap: break-word;      /* IE 5+ */
+  min-width: 10px;
+  min-height: 60px;
+  font-size: 14px;
+}
+
+.bubbleUser {
+position: relative;
+min-height: 30px;
+width: 100%;
+height: 100%;
+padding: 10px 10px 0px 10px;
+background: #d9edf7;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+margin-top: 1%;
+margin-left: 5%;
+color: #275A74;
+}
+
+.bubbleTriangleUser {
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 15px 10px 11px 0;
+border-color: transparent #d9edf7;
+display: block;
+width: 0;
+z-index: 1;
+left: -9px;
+top: 9px;
+}
+
+.bubbleOther {
+position: relative;
+min-height: 50px;
+width: 100%;
+height: 100%;
+padding: 10px 10px 0px 10px;
+background: #FFE5E5;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+margin-top: 1%;
+margin-right: 5%;
+color:#7F0000;
+}
+
+.bubbleTriangleOther {
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 15px 0px 10px 11px;
+border-color: transparent #FFE5E5;
+display: block;
+width: 0;
+z-index: 1;
+right: -9px;
+top: 9px;
+}
+
+.overCharLimit{
+  background:#FF8080;
+  border-color: #FF8080;
+}
+
+/* Round outcome */
+.earnings{
+  text-align: center;
+  font-size: 20px;
+  font-weight: bolder;
+  margin-top: 2%;
+}
+
+/* Players rating each other */
+input[type=range].playerRange{
+  display: inline;
+  width: 80%;
+  margin-left: 2%;
+}
+#playerRatingSubmit{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 10%;
+}
+
+/* Final outcomes */
+.finalEarnings{
+  text-align: center;
+  font-size: 20px;
+  font-weight: normal;
+  list-style: none;
+  margin-top: 1%;
+  color: #AEAEAE;
+}
+.finalEarningsText{
+  text-align: center;
+  margin-bottom: 5%;
+  position: relative;
+  right: 5%;
+}
+#playerLabel{
+  color: #309DD4;
+  font-style: italic;
+}
+
+/* End survey */
+input[type=range].beliefRating{
+  display: inline;
+  width: 30%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+/* Footer styling */
+.footer{
+  position:fixed;
+  width:100%;
+  bottom: 0;
+}
+.footbanner{
+  border:none;
+  height:25px; 
+  color:#000033; 
+  border-color:#000033; 
+  background-color:#000033; 
+  margin-top:2px
+}
+
+/* Navbar styling */
+.navbar-fixed-top {
+    height: 80px;
+    margin: 0;
+    padding: 0;
+    color: #CCFFFF;
+    background-color: #000033 !important;
+    border-color: transparent;
+}
+.navbar-header {
+    height: 80px;
+    width: auto;
+    padding: 0;
+    margin: 0;
+}
+.icon-bar {
+    background-color: white !important;
+}
+.navbar-brand {
+    height: 80px;
+    padding: 2px;
+}
+.navbar-nav > li > a{
+    height: 80px;
+    padding: 30px 0 30px 30px;
+    margin: 0;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #FFFFFF;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #CCFFFF;
+}
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #555;
+    background-color: #E7E7E7;
+}
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #555;
+    background-color: #D5D5D5;
+}
+.navbar {min-height:40px !important;}
+
+/* Progress bar styling */
+#roundCounter{
+  font-weight: bold;
+  color: #000033
+}
+
+ul.nav-wizard {
+  background-color: #f9f9f9;
+  border: 1px solid #d4d4d4;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  *zoom: 1;
+  position: relative;
+  overflow: hidden;
+}
+ul.nav-wizard:before {
+  display: block;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 46px;
+  height: 47px;
+  border-top: 1px solid #d4d4d4;
+  border-bottom: 1px solid #d4d4d4;
+  z-index: 11;
+  content: " ";
+}
+ul.nav-wizard:after {
+  display: block;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 138px;
+  height: 47px;
+  border-top: 1px solid #d4d4d4;
+  border-bottom: 1px solid #d4d4d4;
+  z-index: 11;
+  content: " ";
+}
+ul.nav-wizard li {
+  position: relative;
+  float: left;
+  height: 46px;
+  display: inline-block;
+  text-align: middle;
+  padding: 0 20px 0 30px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 46px;
+}
+ul.nav-wizard li a {
+  color: #000033;
+  padding: 0;
+}
+ul.nav-wizard li a:hover {
+  background-color: transparent;
+}
+ul.nav-wizard li:before {
+  position: absolute;
+  display: block;
+  border: 24px solid transparent;
+  border-left: 16px solid #d4d4d4;
+  border-right: 0;
+  top: -1px;
+  z-index: 10;
+  content: '';
+  right: -16px;
+}
+ul.nav-wizard li:after {
+  position: absolute;
+  display: block;
+  border: 24px solid transparent;
+  border-left: 16px solid #f9f9f9;
+  border-right: 0;
+  top: -1px;
+  z-index: 10;
+  content: '';
+  right: -15px;
+}
+ul.nav-wizard li.active {
+  color: #3a87ad;
+  background: #d9edf7;
+}
+ul.nav-wizard li.active:after {
+  border-left: 16px solid #d9edf7;
+}
+ul.nav-wizard li.active a,
+ul.nav-wizard li.active a:active,
+ul.nav-wizard li.active a:visited,
+ul.nav-wizard li.active a:focus {
+  color: #3a87ad;
+  background: #d9edf7;
+}
+ul.nav-wizard .active ~ li {
+  color: #999999;
+  background: #ededed;
+}
+ul.nav-wizard .active ~ li:after {
+  border-left: 16px solid #ededed;
+}
+ul.nav-wizard .active ~ li a,
+ul.nav-wizard .active ~ li a:active,
+ul.nav-wizard .active ~ li a:visited,
+ul.nav-wizard .active ~ li a:focus {
+  color: #999999;
+  background: #ededed;
+}
+ul.nav-wizard.nav-wizard-backnav li:hover {
+  color: #000033;
+  background: #f6fbfd;
+}
+ul.nav-wizard.nav-wizard-backnav li:hover:after {
+  border-left: 16px solid #f6fbfd;
+}
+ul.nav-wizard.nav-wizard-backnav li:hover a,
+ul.nav-wizard.nav-wizard-backnav li:hover a:active,
+ul.nav-wizard.nav-wizard-backnav li:hover a:visited,
+ul.nav-wizard.nav-wizard-backnav li:hover a:focus {
+  color: #000033;
+  background: #f6fbfd;
+}
+ul.nav-wizard.nav-wizard-backnav .active ~ li {
+  color: #999999;
+  background: #ededed;
+}
+ul.nav-wizard.nav-wizard-backnav .active ~ li:after {
+  border-left: 16px solid #ededed;
+}
+ul.nav-wizard.nav-wizard-backnav .active ~ li a,
+ul.nav-wizard.nav-wizard-backnav .active ~ li a:active,
+ul.nav-wizard.nav-wizard-backnav .active ~ li a:visited,
+ul.nav-wizard.nav-wizard-backnav .active ~ li a:focus {
+  color: #999999;
+  background: #ededed;
+}
+
+/*My added stuff*/
+
+/*Making the container less wide*/
+.consent {
+  width: 40%;
+  margin: auto;
+}
+/*making the button on the right*/
+.nextButton {
+  float: right;
+}
+
+.consent-form {
+    margin: 0;
+    background-color: transparent;
+    text-align: center;
+}
+.consent-button {
+  display: inline-block;
+}
