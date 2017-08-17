@@ -28,3 +28,5 @@ useraccounts:unstyled
 accounts-ui
 mizzao:user-status
 accounts-password
+session
+u2622:persistent-session

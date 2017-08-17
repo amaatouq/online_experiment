@@ -467,6 +467,8 @@
         <item url="file://$USER_HOME$/.meteor/packages/es5-shim/4.6.15/web.browser/console.js" />
         <item url="file://$USER_HOME$/.meteor/packages/es5-shim/4.6.15/web.browser/client.js" />
         <item url="file://$USER_HOME$/.meteor/packages/es5-shim/4.6.15/web.browser/server.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/amplify/1.0.0/web.browser/packages/amplify.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/u2622_persistent-session/0.4.4/web.browser/lib/persistent_session.js" />
         <item url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.13/web.browser/pre.js" />
         <item url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.13/web.browser/post.js" />
         <item url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.13/web.browser/fastclick.js" />
@@ -941,6 +943,8 @@
       <root url="file://$USER_HOME$/.meteor/packages/es5-shim/4.6.15/web.browser/console.js" />
       <root url="file://$USER_HOME$/.meteor/packages/es5-shim/4.6.15/web.browser/client.js" />
       <root url="file://$USER_HOME$/.meteor/packages/es5-shim/4.6.15/web.browser/server.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/amplify/1.0.0/web.browser/packages/amplify.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/u2622_persistent-session/0.4.4/web.browser/lib/persistent_session.js" />
       <root url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.13/web.browser/pre.js" />
       <root url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.13/web.browser/post.js" />
       <root url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.13/web.browser/fastclick.js" />

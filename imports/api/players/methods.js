@@ -1,10 +1,10 @@
 import { Meteor } from 'meteor/meteor';
 import { Players } from './players.js';
 import { Accounts } from 'meteor/accounts-base';
+import { Random } from 'meteor/random'
 
 Meteor.methods({
     'players.createUser'(random_username,random_password) {
-        console.log('I am in the method');
         user = Accounts.createUser({
             username: random_username,
             password: random_password
@@ -19,21 +19,16 @@ Meteor.methods({
             status: 'instructions',
             passedQuiz: false,
             quizAttempts: 0,
-            needRematch: false,
-            condition: 'control',
-            consent: true
+            condition: assignUserCondition(),
+            avatar: null,
+            score: 0,
+            bonus: 0,
         });
     },
-
-    'players.logOut'() {
-        if (!this.userId) {
-            Accounts._server.method_handlers.logout ();
-            Accounts._server.method_handlers.logoutOtherClients ();
-        }
-    }
-
 
 
 });
 
-
+function assignUserCondition() {
+    return Random.choice(CONDITIONS)
+}

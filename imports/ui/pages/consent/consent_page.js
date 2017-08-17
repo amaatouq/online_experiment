@@ -2,7 +2,6 @@ import './consent_page.html';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Random } from 'meteor/random'
 
-
 import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor'
 
@@ -15,10 +14,17 @@ Template.consent_page.events({
         Meteor.call('players.createUser',random_username,random_password);
         //force login the user so we get this.userId
         Meteor.loginWithPassword(random_username,random_password);
-        //add that user to the Players collection
-        Meteor.call('players.addPlayer');
-        //take the user to the instructions page
-
-        FlowRouter.go('/instructions')
+        //add that user to the Players collection with call back so the redirection doesn't happen
+        //until the user is created
+        Meteor.call('players.addPlayer', (err, res) => {
+            if(err) {
+                console.log(err+' at players.addPlayer');
+            } else {
+                //take the users to the instructions page
+                FlowRouter.go('/instructions');
+            }
+        });
     }
 });
+
+
