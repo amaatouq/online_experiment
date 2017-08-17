@@ -1,38 +1,39 @@
 import { Meteor } from 'meteor/meteor';
-import { Accounts } from 'meteor/accounts-base';
 import { Players } from './players.js';
-import { Random } from 'meteor/random'
+import { Accounts } from 'meteor/accounts-base';
 
 Meteor.methods({
-    'players.addPlayer'() {
+    'players.createUser'(random_username,random_password) {
         console.log('I am in the method');
-        const username = Random.id();
-
-        const user = Accounts.createUser({
-            username: username
+        user = Accounts.createUser({
+            username: random_username,
+            password: random_password
         });
+        return user;
+    },
 
-        //TODO: force login
-
-        console.log(username);
-        console.log(Meteor.userId());
-
+    'players.addPlayer'(){
         Players.insert({
-            _id: username,
+            _id: this.userId,
             enterTime: new Date(),
             status: 'instructions',
             passedQuiz: false,
             quizAttempts: 0,
             needRematch: false,
-            condition: 'control'
+            condition: 'control',
+            consent: true
         });
+    },
 
-        if (user){
-            return user
-        } else {
-            console.log('no user')
+    'players.logOut'() {
+        if (!this.userId) {
+            Accounts._server.method_handlers.logout ();
+            Accounts._server.method_handlers.logoutOtherClients ();
         }
     }
+
+
+
 });
 
 

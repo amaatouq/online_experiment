@@ -1,6 +1,11 @@
 <template name="header_layout">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
+            {{#if currentUser}}
+                <form action="" method="post" class="logout">
+                    <button class="btn btn-danger logout-button">End Game</button>
+                </form>
+            {{/if}}
             <div class="navbar-header">
                 <img class = "navbar-brand" id = "logo" src= "/HumanDynamics_Logo_R_RGB.png">
             </div>

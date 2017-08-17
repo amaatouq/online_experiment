@@ -447,7 +447,7 @@ ul.nav-wizard.nav-wizard-backnav .active ~ li a:focus {
   margin: auto;
 }
 /*making the button on the right*/
-.nextButton {
+.next-button {
   float: right;
 }
 
@@ -458,4 +458,10 @@ ul.nav-wizard.nav-wizard-backnav .active ~ li a:focus {
 }
 .consent-button {
   display: inline-block;
+}
+
+.logout-button {
+  margin-top: 10px;
+  display: inline-block;
+  float: right;
 }

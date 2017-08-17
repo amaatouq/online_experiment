@@ -18,7 +18,8 @@ FlowRouter.route('/', {
   name: 'landing',
   action() {
       //if the user didn't consent or doesn't exit or new connections (check Players collection)
-      if (!Meteor.loggingIn()) {
+      console.log(this.userId)
+      if (!this.userId) {
           FlowRouter.go('/consent')
       }
     //
