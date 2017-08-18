@@ -28,7 +28,6 @@ FlowRouter.route('/', {
   name: 'landing',
   action() {
       let userStatus = Session.get('userStatus');
-      console.log(userStatus);
       if (userStatus) {
           FlowRouter.go('/'+userStatus)
       }
@@ -40,6 +39,10 @@ FlowRouter.route('/', {
 // routing to consent
 FlowRouter.route( '/consent', {
     action() {
+        //if user is already logged in, no need to take them to the consent page
+        if (Meteor.userId()){
+            FlowRouter.go('/')
+        }
         BlazeLayout.render( 'experimentLayout', {
             header: 'header_layout',
             page: 'consent_page',

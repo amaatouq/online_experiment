@@ -1,4 +1,13 @@
 <template name="instructions_page">
-<h1>This is the instruction page</h1>
-    <p>The user is {{currentUser._id}} with data {{userData.status}}</p>
+    <div class = "container-fluid" id = "main">
+        {{#if acceptStage}}
+            {{> accept}}
+        {{/if}}
+
+        {{#if overviewStage}}
+            {{> overview}}
+        {{/if}}
+
+
+    </div>
 </template>

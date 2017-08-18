@@ -451,6 +451,11 @@ ul.nav-wizard.nav-wizard-backnav .active ~ li a:focus {
   float: right;
 }
 
+.previous-button {
+  float: left;
+}
+
+
 .consent-form {
     margin: 0;
     background-color: transparent;
