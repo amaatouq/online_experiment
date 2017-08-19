@@ -1,13 +1,15 @@
 <template name="instructions_page">
     <div class = "container-fluid" id = "main">
         {{#if acceptStage}}
-            {{> accept}}
+            {{> accept groupSize=conditionData.GROUPS_SIZE notControl=notControl}}
         {{/if}}
 
         {{#if overviewStage}}
-            {{> overview}}
+            {{> overview nRounds=conditionData.N_ROUNDS}}
         {{/if}}
 
-
+        {{#if roundsStage}}
+            {{> rounds nStages=nStages notControl=notControl isT1=isT1 isT2=isT2 isControl=isControl}}
+        {{/if}}
     </div>
 </template>

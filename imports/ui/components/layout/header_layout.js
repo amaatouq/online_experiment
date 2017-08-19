@@ -6,9 +6,10 @@ import { Meteor } from 'meteor/meteor'
 
 //subscribe the user (even if he is not created yet) as we will need user data all the time
 Template.header_layout.onCreated(function () {
-    this.autorun(() => {
-        Meteor.subscribe('players.playerData');
-    });
+    //this now moved to startup code
+    // this.autorun(() => {
+    //     Meteor.subscribe('players.playerData');
+    // });
 });
 
 //Add the logout button and clear the session

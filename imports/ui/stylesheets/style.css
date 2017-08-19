@@ -470,3 +470,16 @@ ul.nav-wizard.nav-wizard-backnav .active ~ li a:focus {
   display: inline-block;
   float: right;
 }
+
+
+.instructions-image-block {
+    display: inline-block;
+    margin-left: 2%;
+    margin-right: auto;
+    width: 15%;
+    height: 10%
+}
+
+#inst-images{
+    text-align:center;
+}

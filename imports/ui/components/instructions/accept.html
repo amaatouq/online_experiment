@@ -18,9 +18,16 @@
                 For the best experience please scroll/adjust the window until you can see both the top and bottom banners of the screen.<br><br>
                 Please read the following set of instructions <i>carefully</i> to learn how to play the game.<br><br>
                 You may move forward and backwards through any page of these instructions at any time.
+                {{#if notControl}}
+                    <br><br>
+                    After completing the instructions and comprehension check, you will enter the game's lobby.<br><br>
+                    The game will start automatically after {{groupSize}} players enter the lobby, and you will hear a bell ring.
+                {{/if}}
             </blockquote>
+
             <br>
             <p align = "center" style = "font-size:14px"> Click next to begin the instructions </p>
+            <br><br><br>
             <form action="" method="post" class="nextInstruction">
                 <input class="btn btn-primary next-button col-md-2" type="submit" value="Next">
             </form>

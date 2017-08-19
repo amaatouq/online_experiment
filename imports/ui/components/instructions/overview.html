@@ -2,7 +2,7 @@
     <!--title row 12-0-0 -->
     <div class="row">
         <div class="col-md-12">
-            <h3 align="center"> Game Overview</h3>
+            <h3 align="center">Game Overview</h3>
         </div>
     </div>
 
@@ -14,14 +14,36 @@
         </div>
         <!--middle column-->
         <div class="col-md-8">
-            <blockquote class = "instr">
-                In this game you will be making a series of decisions about how to allocate points with <b>{{gameSize}} other players in real-time</b> over the course of {{numRounds}} rounds. Each player will be given their own private account and a separate group account will be shared by all players. At the end of the game we will randomly select one of the rounds and pay you a bonus based on the number of points earned in that round at the rate of: <b>1 point = 2 cents</b>.
-            </blockquote>
-            <br>
 
             <blockquote class = "instr">
-                In the beginning of every round of you will decide <b>how many of your own points you would like to contribute to the group account.</b> At the end of every round, the group account will be multiplied by 1.5 and points will be <b>evenly</b> redistributed to all players.
+                The game consists of {{nRounds}} rounds.
+                At each round you will see a scatter plot and be asked to estimate the correlation of the X and Y variables.
+                Correlation measures how strongly two variables are related to each other.
             </blockquote>
+
+
+            <!--Adding the image in the middle column-->
+            <div id="inst-images">
+            <p align = "center" style = "font-size:14px"> Click on the thumbnail to expand the image and read the caption </p>
+            <a href="/img/instructions/overview.png" data-lightbox="image1" data-title="This graph depicts the correlation between weight and height.
+            As weight increases, height tends to increase as well">
+                <img class="img-thumbnail instructions-image-block" src="/img/instructions/overview.png"/>
+            </a>
+
+            <a href="/img/instructions/overview2.png" data-lightbox="image1"
+               data-title="Example of different plots with different correlation levels.">
+                <img class="img-thumbnail instructions-image-block" src="/img/instructions/overview2.png"/>
+            </a>
+            </div>
+            <br>
+
+            <blockquote class ='instr'>
+                In this game, your correlation guess can range from 0 to 1, and the closer
+                the points fit to a straight line, the closer the correlation will be to 1.
+                No calculations are necessary, just make your best estimate.
+            </blockquote>
+
+
             <br>
             <form action="" method="post" class="previousInstruction">
                 <input class="btn btn-primary previous-button col-md-2" type="submit" value="Previous">

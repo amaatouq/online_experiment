@@ -1,0 +1,98 @@
+<template name="rounds">
+    <!--title row 12-0-0 -->
+    <div class="row">
+        <div class="col-md-12">
+            <h3 align="center">Structure of Each Round</h3>
+        </div>
+    </div>
+
+    <!--body row 2-8-2 -->
+    <div class="row">
+        <!--left column-->
+        <div class="col-md-1">
+
+        </div>
+        <!--middle column-->
+        <div class="col-md-10">
+            <p style = "font-size:18px">Each round will consist of {{nStages}} stages:
+                <i>Your Guess</i>,{{#if notControl}}<i> Interactive Guess</i>,{{/if}} and
+                <i>Round Outcome</i>.
+            </p>
+
+            <blockquote class="instr">
+                1. Your Guess: Guess the correlation of the plot shown. Use the slider below
+                the plot to pick a value, and click "Submit" when you are ready.
+                You can take maximum 30 seconds to submit.
+            <br><br>
+            {{#if notControl}}
+                    2. Interactive Guess: Here you will see the guesses of other players.
+                    You can change your guess by using the slider bar, and see how other players change
+                    their guesses in real-time. Click "Submit" when you are ready to submit your
+                    final guess. You can take maximum 30 seconds to submit. <br>
+            {{/if}}
+                <br>
+                {{#if notControl}}3.{{else}}2.{{/if}} Round Outcome: See your final guess vs. the actual correlation value, and
+                the score you earned. See the scores of all players, and choose who you want to
+                follow in the next round. Use the unfollow and follow buttons to choose a maximum
+                of 3 players.
+            </blockquote>
+
+            <!--Adding the image in the middle column-->
+            <div id="inst-images">
+                <a href="/img/instructions/solo_stage1.png" data-lightbox="image1" data-title="The first stage:
+                You enter your guess using the slider below the plot">
+                    <img class="img-thumbnail instructions-image-block" src="/img/instructions/solo_stage1.png"/>
+                </a>
+
+                {{#if notControl}}
+                    <a href="/img/instructions/static_stage2.png" data-lightbox="image1"
+                       data-title="The second stage: You observe the guesses of the players you are
+                       connected to and you can revise your estimate.">
+                        <img class="img-thumbnail instructions-image-block" src="/img/instructions/static_stage2.png"/>
+                    </a>
+                {{/if}}
+
+                {{#if isControl}}
+                    <a href="/img/instructions/solo_stage2.png" data-lightbox="image1"
+                       data-title="The 2nd stage: You can see what the correct answer.">
+                        <img class="img-thumbnail instructions-image-block" src="/img/instructions/solo_stage2.png"/>
+                    </a>
+                {{/if}}
+
+                {{#if isT1}}
+                    <a href="/img/instructions/static_stage3.png" data-lightbox="image1"
+                       data-title="The 3rd stage: You can see what the correct answer.">
+                        <img class="img-thumbnail instructions-image-block" src="/img/instructions/static_stage3.png"/>
+                    </a>
+                {{/if}}
+
+                {{#if isT2}}
+                    <a href="/img/instructions/dynamic_stage3.png" data-lightbox="image1"
+                       data-title="The 3rd stage: You can see the correct answer and decide who to follow for the next round">
+                        <img class="img-thumbnail instructions-image-block" src="/img/instructions/dynamic_stage3.png"/>
+                    </a>
+                {{/if}}
+
+
+            </div>
+
+
+
+            <form action="" method="post" class="previousInstruction">
+                <input class="btn btn-primary previous-button col-md-2" type="submit" value="Previous">
+            </form>
+            <form action="" method="post" class="nextInstruction">
+                <input class="btn btn-primary next-button col-md-2" type="submit" value="Next">
+            </form>
+
+        </div>
+
+
+
+        <!--right column -->
+        <div class="col-md-1">
+
+        </div>
+
+    </div>
+</template>

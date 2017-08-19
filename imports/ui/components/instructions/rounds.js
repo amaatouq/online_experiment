@@ -1,20 +1,18 @@
-import './overview.html'
-
+import './rounds.html'
 
 import { Session } from 'meteor/session'
 import { Template } from 'meteor/templating'
 
 
 
-
-Template.overview.events({
+Template.rounds.events({
     'submit .nextInstruction'(event){
         event.preventDefault();
-        Session.setPersistent('instructionStage','rounds')
+        Session.setPersistent('instructionStage','example_round')
     },
     'submit .previousInstruction'(event) {
         event.preventDefault();
-        Session.setPersistent('instructionStage', 'accept')
+        Session.setPersistent('instructionStage', 'overview')
     }
 });
 
