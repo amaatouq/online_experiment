@@ -7,6 +7,7 @@ import './instructions_page.html';
 import'../../components/instructions/accept.js'
 import'../../components/instructions/overview.js'
 import'../../components/instructions/rounds.js'
+import'../../components/instructions/progress.js'
 
 
 
@@ -19,7 +20,6 @@ import { Players } from '../../../api/players/players.js';
 Template.instructions_page.onCreated(function () {
     //set the userStatus to be at the instructions for routing purposes
     Session.setPersistent('userStatus','instructions');
-
     //set the instructionStage to be at the first page if they just arrived
     const instructionStage =  Session.get('instructionStage');
     if (!instructionStage) {
@@ -29,7 +29,7 @@ Template.instructions_page.onCreated(function () {
 });
 
 Template.instructions_page.helpers({
-    //for the next/previous routing procedure
+    //for the next/previous routing procedure and the progress bar
     acceptStage() {
         return Session.get('instructionStage') === 'accept';
     },
@@ -73,7 +73,8 @@ Template.instructions_page.helpers({
             LOBBY_TIMEOUT: LOBBY_TIMEOUT.split('.').reduce((o, i) => o[i], CONDITIONS_SETTINGS),
             BONUS_CONVERSION: BONUS_CONVERSION.split('.').reduce((o, i) => o[i], CONDITIONS_SETTINGS),
         }
-    }
+    },
+    //animation of the sliding templates using /#transition but it is still NOT working
 });
 
 function userData(){

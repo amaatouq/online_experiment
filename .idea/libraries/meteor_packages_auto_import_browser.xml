@@ -234,9 +234,11 @@
         <item url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha-core/1.0.1/web.browser/server.js" />
         <item url="file://$USER_HOME$/.meteor/packages/babel-runtime/1.0.1/web.browser/babel-runtime.js" />
         <item url="file://$USER_HOME$/.meteor/packages/base64/1.0.10/web.browser/base64.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/webtempest_animate/0.1.9/web.browser/packages/webtempest_animate/animate.css" />
         <item url="file://$USER_HOME$/.meteor/packages/binary-heap/1.0.10/web.browser/min-max-heap.js" />
         <item url="file://$USER_HOME$/.meteor/packages/binary-heap/1.0.10/web.browser/min-heap.js" />
         <item url="file://$USER_HOME$/.meteor/packages/binary-heap/1.0.10/web.browser/max-heap.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/webtempest_animate/0.1.9/web.browser/packages/webtempest_animate.js" />
         <item url="file://$USER_HOME$/.meteor/packages/blaze/2.3.2/web.browser/dombackend.js" />
         <item url="file://$USER_HOME$/.meteor/packages/blaze/2.3.2/web.browser/view.js" />
         <item url="file://$USER_HOME$/.meteor/packages/blaze/2.3.2/web.browser/materializer.js" />
@@ -716,9 +718,11 @@
       <root url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha-core/1.0.1/web.browser/server.js" />
       <root url="file://$USER_HOME$/.meteor/packages/babel-runtime/1.0.1/web.browser/babel-runtime.js" />
       <root url="file://$USER_HOME$/.meteor/packages/base64/1.0.10/web.browser/base64.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/webtempest_animate/0.1.9/web.browser/packages/webtempest_animate/animate.css" />
       <root url="file://$USER_HOME$/.meteor/packages/binary-heap/1.0.10/web.browser/min-max-heap.js" />
       <root url="file://$USER_HOME$/.meteor/packages/binary-heap/1.0.10/web.browser/min-heap.js" />
       <root url="file://$USER_HOME$/.meteor/packages/binary-heap/1.0.10/web.browser/max-heap.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/webtempest_animate/0.1.9/web.browser/packages/webtempest_animate.js" />
       <root url="file://$USER_HOME$/.meteor/packages/blaze/2.3.2/web.browser/dombackend.js" />
       <root url="file://$USER_HOME$/.meteor/packages/blaze/2.3.2/web.browser/view.js" />
       <root url="file://$USER_HOME$/.meteor/packages/blaze/2.3.2/web.browser/materializer.js" />
