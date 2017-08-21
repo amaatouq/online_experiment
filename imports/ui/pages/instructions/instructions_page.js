@@ -4,10 +4,13 @@ import '../../../../lib/globals.js'
 import './instructions_page.html';
 
 //import the components
+import'../../components/instructions/progress.js' //progress bar
 import'../../components/instructions/accept.js'
 import'../../components/instructions/overview.js'
 import'../../components/instructions/rounds.js'
-import'../../components/instructions/progress.js'
+import'../../components/instructions/example.js'
+import'../../components/instructions/quiz.js'
+
 
 
 
@@ -38,6 +41,12 @@ Template.instructions_page.helpers({
     },
     roundsStage() {
         return Session.get('instructionStage') === 'rounds';
+    },
+    exampleStage() {
+        return Session.get('instructionStage') === 'example';
+    },
+    quizStage() {
+        return Session.get('instructionStage') === 'quiz';
     },
     notControl(){
         return userData().condition !== 'control';

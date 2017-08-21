@@ -1,23 +1,23 @@
-import './rounds.html'
+import './example.html'
 
 import { Session } from 'meteor/session'
 import { Template } from 'meteor/templating'
 
-Template.rounds.onCreated(()=>{
+Template.example.onCreated(()=>{
     //Session.setPersistent('instructionTransition',null);
 
 });
 
-Template.rounds.events({
+Template.example.events({
     'submit .nextInstruction'(event){
         event.preventDefault();
         Session.setPersistent('instructionTransition','next');
-        Session.setPersistent('instructionStage','example')
+        Session.setPersistent('instructionStage','quiz')
     },
     'submit .previousInstruction'(event) {
         event.preventDefault();
         Session.setPersistent('instructionTransition','previous');
-        Session.setPersistent('instructionStage', 'overview')
+        Session.setPersistent('instructionStage', 'rounds')
     }
 });
 

@@ -483,3 +483,9 @@ ul.nav-wizard.nav-wizard-backnav .active ~ li a:focus {
 #inst-images{
     text-align:center;
 }
+
+.form-actions {
+  margin: 0;
+  background-color: transparent;
+  text-align: center;
+}

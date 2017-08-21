@@ -26,8 +26,18 @@ Meteor.methods({
         });
     },
 
+    //General purpose document modification function for the user
+    'players.updatePlayerInfo'(currentUser,data,operation) {
+        if (operation === 'set') {
+            Players.update(currentUser, {$set: data});
+        } else if (operation === 'inc') {
+            Players.update(currentUser, {$inc: data});
+        } else if (operation === 'dec') {
+            Players.update(currentUser, {$dec: data});
+        }
+    }
 
-});
+    });
 
 function assignUserCondition() {
     return Random.choice(CONDITIONS)

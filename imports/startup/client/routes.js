@@ -52,9 +52,13 @@ FlowRouter.route( '/consent', {
     name: 'consentRoute'
 });
 
-//routing to instructions
+// routing to instructions
 FlowRouter.route( '/instructions', {
     action() {
+        //if user is already logged in, no need to take them to the consent page
+        if (Meteor.userId()){
+            FlowRouter.go('/')
+        }
         BlazeLayout.render( 'experimentLayout', {
             header: 'header_layout',
             page: 'instructions_page',
@@ -63,6 +67,45 @@ FlowRouter.route( '/instructions', {
     },
     name: 'instructionsRoute'
 });
+
+//routing to lobby
+FlowRouter.route( '/lobby', {
+    action() {
+        BlazeLayout.render( 'experimentLayout', {
+            header: 'header_layout',
+            page: 'lobby_page',
+            footer: 'footer_layout',
+        });
+    },
+    name: 'lobbyRoute'
+});
+
+
+//routing to exitSurvey
+FlowRouter.route( '/exitSurvey', {
+    action() {
+        BlazeLayout.render( 'experimentLayout', {
+            header: 'header_layout',
+            page: 'exit_page',
+            footer: 'footer_layout',
+        });
+    },
+    name: 'exitRoute'
+});
+
+//routing to game
+FlowRouter.route( '/game', {
+    action() {
+        BlazeLayout.render( 'experimentLayout', {
+            header: 'header_layout',
+            page: 'game_page',
+            footer: 'footer_layout',
+        });
+    },
+    name: 'gameRoute'
+});
+
+
 
 
 

@@ -1,17 +1,29 @@
 <template name="instructions_page">
     <div>
-    {{> progress acceptStage=acceptStage overviewStage=overviewStage roundsStage=roundsStage}}
+    {{> progress
+            acceptStage=acceptStage overviewStage=overviewStage roundsStage=roundsStage
+            exampleStage=exampleStage quizStage=quizStage}}
     <div class = "container-fluid" id = "main">
         {{#if acceptStage}}
-            {{> accept groupSize=conditionData.GROUPS_SIZE notControl=notControl}}
+            {{> accept
+                    groupSize=conditionData.GROUPS_SIZE notControl=notControl}}
         {{/if}}
         {{#if overviewStage}}
-            {{> overview nRounds=conditionData.N_ROUNDS}}
+            {{> overview
+                    nRounds=conditionData.N_ROUNDS}}
         {{/if}}
 
         {{#if roundsStage}}
-            {{> rounds nStages=nStages notControl=notControl isT1=isT1 isT2=isT2 isControl=isControl}}
+            {{> rounds
+                    nStages=nStages notControl=notControl isT1=isT1 isT2=isT2 isControl=isControl}}
         {{/if}}
+        {{#if exampleStage}}
+            {{> example}}
+        {{/if}}
+        {{#if quizStage}}
+            {{> quiz}}
+        {{/if}}
+
     </div>
     </div>
 </template>
