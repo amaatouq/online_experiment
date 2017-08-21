@@ -57,10 +57,6 @@ FlowRouter.route( '/consent', {
 // routing to instructions
 FlowRouter.route( '/instructions', {
     action() {
-        //if user is already logged in, no need to take them to the consent page
-        if (Meteor.userId()){
-            FlowRouter.go('/')
-        }
         BlazeLayout.render( 'experimentLayout', {
             header: 'header_layout',
             page: 'instructions_page',
