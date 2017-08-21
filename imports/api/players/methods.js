@@ -18,6 +18,7 @@ Meteor.methods({
             enterTime: new Date(),
             status: 'instructions',
             passedQuiz: false,
+            exitStatus:null,
             quizAttempts: 0,
             condition: assignUserCondition(),
             avatar: null,

@@ -28,7 +28,7 @@ Template.instructions_page.onCreated(function () {
     if (!instructionStage) {
         Session.setPersistent('instructionStage','accept')
     }
-
+    Meteor.call('players.updatePlayerInfo',Meteor.userId(),{status:'instructions'},'set');
 });
 
 Template.instructions_page.helpers({

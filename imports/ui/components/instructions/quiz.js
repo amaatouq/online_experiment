@@ -106,11 +106,17 @@ Template.quiz.events({
     },
 	'submit .startGame'(event) {
         event.preventDefault();
+        Session.setPersistent('userStatus','lobby');
+        Meteor.call('players.updatePlayerInfo',Meteor.userId(),{status:'lobby'},'set');
         FlowRouter.go('/lobby');
     },
     'submit .exitSurvey'(event) {
         event.preventDefault();
-        FlowRouter.go('/exitSurvey');
+        Session.setPersistent('userStatus','exit');
+        console.log(Meteor.userId());
+        Meteor.call('players.updatePlayerInfo',Meteor.userId(),{status:'exit'},'set');
+        Meteor.call('players.updatePlayerInfo',Meteor.userId(),{exitStatus:'failedQuiz'},'set');
+        FlowRouter.go('/exit');
     },
     'submit .previousInstruction'(event) {
         event.preventDefault();

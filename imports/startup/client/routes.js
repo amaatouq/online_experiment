@@ -13,10 +13,12 @@ import '../../ui/components/layout/footer_layout.js'
 //import pages
 import '../../ui/pages/consent/consent_page.js'
 import '../../ui/pages/instructions/instructions_page.js'
+import '../../ui/pages/exit/exit_page.js'
+
 
 
 //if user is not logged in, take them to consent page
-FlowRouter.triggers.enter([function(context, redirect){
+FlowRouter.triggers.enter([(context, redirect)=>{
     if(!Meteor.userId()){
         FlowRouter.go('/consent')
     }
@@ -82,7 +84,7 @@ FlowRouter.route( '/lobby', {
 
 
 //routing to exitSurvey
-FlowRouter.route( '/exitSurvey', {
+FlowRouter.route( '/exit', {
     action() {
         BlazeLayout.render( 'experimentLayout', {
             header: 'header_layout',
@@ -104,8 +106,6 @@ FlowRouter.route( '/game', {
     },
     name: 'gameRoute'
 });
-
-
 
 
 

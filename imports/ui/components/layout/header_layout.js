@@ -16,9 +16,10 @@ Template.header_layout.onCreated(function () {
 Template.header_layout.events({
     'submit .logout'(event) {
         event.preventDefault();
+        Meteor.call('players.updatePlayerInfo',Meteor.userId(),{status:'exit'},'set');
+        Meteor.call('players.updatePlayerInfo',Meteor.userId(),{exitStatus:'leftGame'},'set');
         Meteor.logout();
         Session.clear();
-        //TODO this should be changed to /exitSurvey once it is developed
-        FlowRouter.go('/consent')
+        FlowRouter.go('/exit')
     }
 });
