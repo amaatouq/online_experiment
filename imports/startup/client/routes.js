@@ -13,6 +13,7 @@ import '../../ui/components/layout/footer_layout.js'
 //import pages
 import '../../ui/pages/consent/consent_page.js'
 import '../../ui/pages/instructions/instructions_page.js'
+import '../../ui/pages/lobby/lobby_page.js'
 import '../../ui/pages/exit/exit_page.js'
 
 

@@ -24,6 +24,7 @@ Meteor.methods({
             avatar: null,
             score: 0,
             bonus: 0,
+            lobbyTimeout: LOBBY_TIMEOUT,
         });
     },
 

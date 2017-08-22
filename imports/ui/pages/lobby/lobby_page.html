@@ -1,0 +1,42 @@
+<template name="lobby_page">
+    <!--title row 12-0-0 -->
+    <div class="row">
+    </div>
+
+    <!--body row 2-8-2-->
+    <div class="row">
+        <!--left column -->
+        <div class="col-md-2">
+            <!--content of left column-->
+        </div>
+        <!--middle column-->
+        <div class="col-md-8">
+
+            <div class = "row well-sm">
+                <div class = "col-xs-4 col-xs-offset-8">
+                    <p align="center" id= "clock">You have been waiting for approx
+                        <br>
+                        {{clock.min}} min and {{clock.sec}} sec
+                    </p>
+                </div>
+            </div>
+            <div class="row well well-lg">
+                <div class="col-xs-10 col-xs-offset-1">
+                    <h3 align="center">There are currently a total of {{numWaiting}} out of {{desiredNumPlayers}} required participants waiting for the game to start.
+                    </h3>
+                    <br>
+                    <h3 align = "center">Please wait a few moments while we try to find the needed participants.<br><br> If we can't find enough participants within {{lobbyTimeout}} minutes we will end the HIT and pay you for your time.<br><br>Please make sure your sound is on as a bell will ring to indicate the start of a new game.</h3>
+                </div>
+            </div>
+        </div>
+
+
+        <!--right column -->
+        <div class="col-md-2">
+            <!--content of right column-->
+        </div>
+
+    </div>
+
+
+</template>
