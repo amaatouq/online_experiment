@@ -10,41 +10,34 @@ Template.lobby_page.onCreated(function() {
         Session.setPersistent('sTime',new Date());
     }
 
-    //keep track of user condition
-    const condition = Players.findOne(Meteor.userId()).condition;
-    console.log('condition '+condition);
-    let isReady = null;
-    let currentUserGame = null;
-    let availableGame = null;
-    Tracker.autorun(() => {
-        const userGameHandler = Meteor.subscribe('games.userGame',Meteor.userId());
-        const availableGamesHandler = Meteor.subscribe('games.userGame',condition);
-        isReady = userGameHandler.ready() && availableGamesHandler.ready();
-        if (isReady) {
-            //if the user is NOT belonging to game yet and no available games exit to join
-            if (!currentUserGame && !availableGame) {
-                console.log('There is no game for this user and not available games');
-                //then create a game and make the user join it
-                Meteor.call('games.createGame', condition,
-                    //callback on game creation
-                    (err, gameId) => {
-                        console.log('so I will create a new game');
-                        if (err) {
-                            //the game wasn't created
-                            console.log('error: '+err + ' while creating a new game')
-                        } else {
-                            //this game was created, now add the current user to it
-                            console.log('and I will join this game #' +gameId);
-                            Meteor.call('games.joinGame', gameId, Meteor.userId(),(err,res)=>{
-                                console.log('now userGame is '+currentUserGame)
-                            });
-                        }
-                    });
-            } else if (!currentUserGame && availableGame) {
-                console.log('There is already a game with #' +availableGame._id + ' so I should join it');
-                Meteor.call('games.joinGame',availableGame._id,Meteor.userId());
-                console.log('there is an available game with id '+availableGame._id+' to add '+Meteor.userId());
+    //get the player condition
+    const condition = Players.find({_id:Meteor.userId()}).condition;
+    //get the player assigned game
+    const userGame = Players.find({_id:Meteor.userId()}).gameId;
+
+    const availableGamesHandler = Meteor.subscribe('games.availableGames',condition);
+    //if the user doesn't belong to game already, there are two options
+    //there is a game that the user could join
+    //otherwise, create a new game and add the user to it
+    Tracker.autorun(()=>{
+        //wait until the available games become ready
+        if (!userGame && availableGamesHandler.ready()) {
+            let availableGame = Games.findOne({ condition: condition, lobbyStatus:'waiting'});
+            //check if there is an available game, then join it, otherwise, create a game and join it
+            if (availableGame){
+                console.log('the user has no game but there is a game so he will join it');
+                Meteor.call('games.joinGame',availableGame._id, Meteor.userId())
+            } else {
+                //no game so we will create it first
+                Meteor.call('games.createGame',condition, (err,gameId)=>{
+                    //then on callback we will join it
+                    Meteor.call('games.joinGame',gameId,Meteor.userId())
+                })
             }
+
+
+        } else {
+            //availableGamesHandler.stop();
         }
     });
 
@@ -52,39 +45,6 @@ Template.lobby_page.onCreated(function() {
 
 
 
-
-
-
-
-
-    // //subscribe to the games that the user can join
-    // if (availableGamesHandler.ready() && userGameHandler.ready()){
-    //     //if the user is NOT belonging to game yet and no available games exit to join
-    //     if (!userGame && !availableGame) {
-    //         console.log('There is no game for this user and not availabe games');
-    //         //then create a game and make the user join it
-    //         Meteor.call('games.createGame', condition,
-    //             //callback on game creation
-    //             (err, gameId) => {
-    //                 console.log('so I will create a new game');
-    //                 if (err) {
-    //                     //the game wasn't created
-    //                     console.log(err + ' while creating a new game')
-    //                 } else {
-    //                     //this game was created, now add the current user to it
-    //                     console.log('and I will join this game #' +gameId);
-    //                     Meteor.call('games.joinGame', gameId, Meteor.userId(),()=>{
-    //                         console.log('now userGame is '+userGame)
-    //                     });
-    //                 }
-    //             });
-    //     } else if (availableGame) {
-    //         console.log('There is already a game with #' +availableGame._id + ' so I should join it');
-    //         Meteor.call('games.joinGame',availableGame._id,Meteor.userId());
-    //         console.log('there is an available game with id '+availableGame._id+' to add '+Meteor.userId());
-    //     }
-    //
-    // }
 
 
 

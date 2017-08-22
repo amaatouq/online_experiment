@@ -25,6 +25,7 @@ Meteor.methods({
             score: 0,
             bonus: 0,
             lobbyTimeout: LOBBY_TIMEOUT,
+            gameId: null
         });
     },
 
