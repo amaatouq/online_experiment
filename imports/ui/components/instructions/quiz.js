@@ -1,7 +1,6 @@
 import './quiz.html'
 import { Template } from 'meteor/templating'
 import {Session} from 'meteor/session';
-import { Players } from "../../../api/players/players";
 import { Meteor } from 'meteor/meteor'
 
 
@@ -54,25 +53,25 @@ Template.quiz.helpers({
 		return Questions.find();
 	},
 	quizAttempts(){
-		return Players.findOne(Meteor.userId()).quizAttempts;
+		return Meteor.users.findOne(Meteor.userId()).quizAttempts;
 	},
 	passedQuiz(){
-		return Players.findOne(Meteor.userId()).passedQuiz;
+		return Meteor.users.findOne(Meteor.userId()).passedQuiz;
 	},
     exhaustedQuizAttempts(){
-	    return (Players.findOne(Meteor.userId()).quizAttempts === MAX_QUIZ_ATTEMPTS);
+	    return (Meteor.users.findOne(Meteor.userId()).quizAttempts === MAX_QUIZ_ATTEMPTS);
     },
     quizError() {
-        let attempts = Players.findOne(Meteor.userId()).quizAttempts;
+        let attempts = Meteor.users.findOne(Meteor.userId()).quizAttempts;
         return (attempts > 0 && attempts < MAX_QUIZ_ATTEMPTS)
     },
     remainingAttempts(){
-        let attempts = Players.findOne(Meteor.userId()).quizAttempts;
+        let attempts = Meteor.users.findOne(Meteor.userId()).quizAttempts;
 
         return MAX_QUIZ_ATTEMPTS-attempts
     },
     noAttempts(){
-        return Players.findOne(Meteor.userId()).quizAttempts === 0;
+        return Meteor.users.findOne(Meteor.userId()).quizAttempts === 0;
     }
 });
 
@@ -82,7 +81,7 @@ Template.quiz.events({
 		//Only allow clients to attempt quiz twice before preventing them from doing so
         event.stopPropagation();
         event.preventDefault();
-        const playerData = Players.findOne(Meteor.userId());
+        const playerData = Meteor.users.findOne(Meteor.userId());
         let form = event.target;
         let result;
 
@@ -97,9 +96,9 @@ Template.quiz.events({
         result = Questions.find({correct:true}).count() === Questions.find().count();
 
         if(!result) {
-            Meteor.call('players.updatePlayerInfo',Meteor.userId(),{'quizAttempts':1},'inc');
+            Meteor.call('users.updateUserInfo',Meteor.userId(),{'quizAttempts':1},'inc');
         } else {
-            Meteor.call('players.updatePlayerInfo',Meteor.userId(),{'passedQuiz':true}, 'set');
+            Meteor.call('users.updateUserInfo',Meteor.userId(),{'passedQuiz':true}, 'set');
         }
 
 
@@ -107,15 +106,15 @@ Template.quiz.events({
 	'submit .startGame'(event) {
         event.preventDefault();
         Session.setPersistent('userStatus','lobby');
-        Meteor.call('players.updatePlayerInfo',Meteor.userId(),{status:'lobby'},'set');
+        Meteor.call('users.updateUserInfo',Meteor.userId(),{status:'lobby'},'set');
         FlowRouter.go('/lobby');
     },
     'submit .exitSurvey'(event) {
         event.preventDefault();
         Session.setPersistent('userStatus','exit');
         console.log(Meteor.userId());
-        Meteor.call('players.updatePlayerInfo',Meteor.userId(),{status:'exit'},'set');
-        Meteor.call('players.updatePlayerInfo',Meteor.userId(),{exitStatus:'failedQuiz'},'set');
+        Meteor.call('users.updateUserInfo',Meteor.userId(),{status:'exit'},'set');
+        Meteor.call('users.updateUserInfo',Meteor.userId(),{exitStatus:'failedQuiz'},'set');
         FlowRouter.go('/exit');
     },
     'submit .previousInstruction'(event) {

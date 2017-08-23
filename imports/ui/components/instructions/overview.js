@@ -12,12 +12,10 @@ Template.overview.onCreated(()=>{
 Template.overview.events({
     'submit .nextInstruction'(event){
         event.preventDefault();
-        Session.setPersistent('instructionTransition','next');
         Session.setPersistent('instructionStage','rounds')
     },
     'submit .previousInstruction'(event) {
         event.preventDefault();
-        Session.setPersistent('instructionTransition','previous');
         Session.setPersistent('instructionStage', 'accept')
     }
 });

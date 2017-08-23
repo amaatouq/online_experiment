@@ -1,8 +1,8 @@
 // Register your apis here
 
-//registering players
-import '../../api/players/methods';
-import '../../api/players/server/publications';
+//registering users
+import '../../api/users/users.js';
+import '../../api/users/methods.js';
 import '../../api/users/server/publications';
 
 //registering games

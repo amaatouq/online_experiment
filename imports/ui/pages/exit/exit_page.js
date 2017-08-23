@@ -6,20 +6,17 @@ import { Template } from 'meteor/templating';
 import { Session } from 'meteor/session'
 import { Meteor } from 'meteor/meteor';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import { Players } from '../../../api/players/players.js';
-
-import '../../../api/players/methods'
 
 
-Template.instructions_page.onCreated(function () {
+Template.exit_page.onCreated(function () {
     //set the userStatus to be exit in the session (this is not needed after the instructions?)
     Session.setPersistent('userStatus','exit');
-    Meteor.call('players.updatePlayerInfo',Meteor.userId(),{status:'exit'},'set')
+    Meteor.call('users.updateUserInfo',Meteor.userId(),{page:'exit'},'set')
 });
 
 Template.exit_page.helpers({
     exitStatus() {
-        let status =  Players.findOne(Meteor.userId()).exitStatus;
+        let status =  Meteor.user().exitStatus;
         let failedQuiz = false;
         let failedMatch = false;
         let connectionError = false;

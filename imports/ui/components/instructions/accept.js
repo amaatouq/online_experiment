@@ -11,7 +11,6 @@ Template.accept.onCreated(()=>{
 Template.accept.events({
     'submit .nextInstruction'(event){
         event.preventDefault();
-        Session.setPersistent('instructionTransition','next');
         Session.setPersistent('instructionStage','overview');
     }
 

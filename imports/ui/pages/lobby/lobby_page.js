@@ -1,5 +1,4 @@
 import './lobby_page.html';
-import { Players } from "../../../api/players/players";
 import { Games } from '../../../api/games/games';
 import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
@@ -11,9 +10,9 @@ Template.lobby_page.onCreated(function() {
     }
 
     //get the player condition
-    const condition = Players.findOne({_id:Meteor.userId()}).condition;
+    const condition = Meteor.user().condition;
     //get the player assigned game
-    const userGame = Players.findOne({_id:Meteor.userId()}).gameId;
+    const userGame = Meteor.user().gameId;
 
     const availableGamesHandler = Meteor.subscribe('games.availableGames',condition);
     //if the user doesn't belong to game already, there are two options
@@ -54,7 +53,7 @@ Template.lobby_page.onCreated(function() {
 Template.lobby_page.helpers({
 
     desiredNumPlayers(){
-        const playerData = Players.findOne(Meteor.userId());
+        const playerData = Meteor.user.findOne(Meteor.userId());
         const GROUPS_SIZE = playerData.condition+'.GROUPS_SIZE';
         return GROUPS_SIZE.split('.').reduce((o, i) => o[i], CONDITIONS_SETTINGS);
     },
@@ -77,9 +76,9 @@ Template.lobby_page.helpers({
         }, 900);
         //if the minutes are the same as the lobby_timeout take them to the exit survey
         if (Session.get('min') >= LOBBY_TIMEOUT) {
-            Meteor.call('players.updatePlayerInfo',Meteor.userId(),{exitStatus:'lobbyTimeout'},'set');
+            Meteor.call('users.updateUserInfo',Meteor.userId(),{exitStatus:'lobbyTimeout'},'set');
             Session.setPersistent('userStatus','exit');
-            Meteor.call('players.updatePlayerInfo',Meteor.userId(),{status:'exit'},'set');
+            Meteor.call('users.updateUserInfo',Meteor.userId(),{page:'exit'},'set');
             FlowRouter.go('/exit');
         }
         return {

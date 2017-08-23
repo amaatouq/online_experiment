@@ -16,8 +16,8 @@ Template.header_layout.onCreated(function () {
 Template.header_layout.events({
     'submit .logout'(event) {
         event.preventDefault();
-        Meteor.call('players.updatePlayerInfo',Meteor.userId(),{status:'exit'},'set');
-        Meteor.call('players.updatePlayerInfo',Meteor.userId(),{exitStatus:'leftGame'},'set');
+        Meteor.call('users.updateUserInfo',Meteor.userId(),{page:'exit'},'set');
+        Meteor.call('users.updateUserInfo',Meteor.userId(),{exitStatus:'leftGame'},'set');
         Meteor.logout();
         Session.clear();
         FlowRouter.go('/exit')

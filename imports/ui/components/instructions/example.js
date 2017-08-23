@@ -11,12 +11,10 @@ Template.example.onCreated(()=>{
 Template.example.events({
     'submit .nextInstruction'(event){
         event.preventDefault();
-        Session.setPersistent('instructionTransition','next');
         Session.setPersistent('instructionStage','quiz')
     },
     'submit .previousInstruction'(event) {
         event.preventDefault();
-        Session.setPersistent('instructionTransition','previous');
         Session.setPersistent('instructionStage', 'rounds')
     }
 });

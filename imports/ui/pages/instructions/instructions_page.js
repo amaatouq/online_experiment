@@ -1,5 +1,3 @@
-import '../../../../lib/globals.js'
-
 //import the relevant page
 import './instructions_page.html';
 
@@ -12,23 +10,20 @@ import'../../components/instructions/example.js'
 import'../../components/instructions/quiz.js'
 
 
-
-
 import { Template } from 'meteor/templating';
 import { Session } from 'meteor/session'
 import { Meteor } from 'meteor/meteor';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import { Players } from '../../../api/players/players.js';
 
 Template.instructions_page.onCreated(function () {
     //set the userStatus to be at the instructions for routing purposes
-    Session.setPersistent('userStatus','instructions');
+    Session.setPersistent('page','instructions');
     //set the instructionStage to be at the first page if they just arrived
     const instructionStage =  Session.get('instructionStage');
     if (!instructionStage) {
         Session.setPersistent('instructionStage','accept')
     }
-    Meteor.call('players.updatePlayerInfo',Meteor.userId(),{status:'instructions'},'set');
+    Meteor.call('users.updateUserInfo',Meteor.userId(),{page:'instructions'},'set');
 });
 
 Template.instructions_page.helpers({
@@ -87,6 +82,6 @@ Template.instructions_page.helpers({
 });
 
 function userData(){
-    return Players.findOne(Meteor.userId());
+    return Meteor.user();
 }
 

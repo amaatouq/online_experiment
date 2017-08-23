@@ -30,9 +30,9 @@ FlowRouter.triggers.enter([(context, redirect)=>{
 FlowRouter.route('/', {
   name: 'landing',
   action() {
-      let userStatus = Session.get('userStatus');
-      if (userStatus) {
-          FlowRouter.go('/'+userStatus)
+      let userPage = Meteor.user().page;
+      if (userPage) {
+          FlowRouter.go('/'+userPage)
       }
 
   },
