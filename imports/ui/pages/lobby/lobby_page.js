@@ -19,7 +19,7 @@ Template.lobby_page.onCreated(function() {
     //if the user doesn't belong to game already, there are two options
     //there is a game that the user could join
     //otherwise, create a new game and add the user to it
-    Tracker.autorun(()=>{
+    Tracker.autorun((attachingPlayerToGame)=>{
         //wait until the available games become ready
         if (!userGame && availableGamesHandler.ready()) {
             let availableGame = Games.findOne({ condition: condition, lobbyStatus:'waiting'});
@@ -34,8 +34,7 @@ Template.lobby_page.onCreated(function() {
                     Meteor.call('games.joinGame',gameId,Meteor.userId())
                 })
             }
-
-
+            attachingPlayerToGame.stop();
         } else {
             //availableGamesHandler.stop();
         }
