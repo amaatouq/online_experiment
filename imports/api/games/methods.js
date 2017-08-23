@@ -19,8 +19,11 @@ Meteor.methods({
 
     'games.joinGame'(gameId,currentUser) {
         Games.upsert({_id:gameId}, {$push: {players:currentUser}});
-        Players.update({_id:currentUser}, {$set: {game_id:gameId}});
+        Players.update({_id:currentUser}, {$set: {gameId:gameId}});
     },
-
+    'games.leaveGame'(currentUser) {
+        const gameId = Players.findOne({_id:currentUser}).gameId;
+        Games.update({_id:gameId}, {$pull: {players:currentUser}})
+    }
 
 });

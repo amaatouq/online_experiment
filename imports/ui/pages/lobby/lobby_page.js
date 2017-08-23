@@ -11,9 +11,9 @@ Template.lobby_page.onCreated(function() {
     }
 
     //get the player condition
-    const condition = Players.find({_id:Meteor.userId()}).condition;
+    const condition = Players.findOne({_id:Meteor.userId()}).condition;
     //get the player assigned game
-    const userGame = Players.find({_id:Meteor.userId()}).gameId;
+    const userGame = Players.findOne({_id:Meteor.userId()}).gameId;
 
     const availableGamesHandler = Meteor.subscribe('games.availableGames',condition);
     //if the user doesn't belong to game already, there are two options
