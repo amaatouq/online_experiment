@@ -14,7 +14,8 @@ Meteor.publish('users.user', function(currentUser) {
             score:1,
             bonus: 1,
             lobbyTimeout: 1,
-            gameId: 1
+            gameId: 1,
+            conditionInfo: 1
         }
     });
     if ( user ) {

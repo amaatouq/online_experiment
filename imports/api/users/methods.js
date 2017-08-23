@@ -18,6 +18,7 @@ Meteor.methods({
         } else if (operation === 'dec') {
             Meteor.users.update(currentUser, {$dec: data});
         }
+        console.log(Meteor.user());
     }
 
 });

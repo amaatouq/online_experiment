@@ -6,16 +6,19 @@
     <div class = "container-fluid" id = "main">
         {{#if acceptStage}}
             {{> accept
-                    groupSize=conditionData.GROUPS_SIZE notControl=notControl}}
+                    groupSize=groupSize notControl= (Cond userCondition '!=' 'control') }}
         {{/if}}
         {{#if overviewStage}}
             {{> overview
-                    nRounds=conditionData.N_ROUNDS}}
+                    nRounds=nRounds}}
         {{/if}}
 
         {{#if roundsStage}}
             {{> rounds
-                    nStages=nStages notControl=notControl isT1=isT1 isT2=isT2 isControl=isControl}}
+                    nStages=nStages notControl=(Cond userCondition '!=' 'control')
+                    isT1=(Cond userCondition '==' 'T1')
+                    isT2=(Cond userCondition '==' 'T1')
+                    isControl=(Cond userCondition '==' 'control')}}
         {{/if}}
         {{#if exampleStage}}
             {{> example}}

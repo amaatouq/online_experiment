@@ -14,33 +14,22 @@ Template.lobby_page.onCreated(function() {
     //get the player assigned game
     const userGame = Meteor.user().gameId;
 
-    const availableGamesHandler = Meteor.subscribe('games.availableGames',condition);
-    //if the user doesn't belong to game already, there are two options
-    //there is a game that the user could join
-    //otherwise, create a new game and add the user to it
-    Tracker.autorun((attachingPlayerToGame)=>{
-        //wait until the available games become ready
-        if (!userGame && availableGamesHandler.ready()) {
-            let availableGame = Games.findOne({ condition: condition, lobbyStatus:'waiting'});
-            //check if there is an available game, then join it, otherwise, create a game and join it
-            if (availableGame){
-                console.log('the user has no game but there is a game so he will join it');
-                Meteor.call('games.joinGame',availableGame._id, Meteor.userId())
-            } else {
-                //no game so we will create it first
-                Meteor.call('games.createGame',condition, (err,gameId)=>{
-                    //then on callback we will join it
-                    Meteor.call('games.joinGame',gameId,Meteor.userId())
-                })
-            }
-            attachingPlayerToGame.stop();
+
+    //if the user has no game, check if there is available game to join, or create one
+    if (!userGame) {
+        let availableGame = Games.findOne({ condition: condition, lobbyStatus:'waiting'});
+        //check if there is an available game, then join it, otherwise, create a game and join it
+        if (availableGame){
+            console.log('the user has no game but there is a game so he will join it');
+            Meteor.call('games.joinGame',availableGame._id, Meteor.userId())
         } else {
-            //availableGamesHandler.stop();
+            //no game so we will create it first
+            Meteor.call('games.createGame',condition, (err,gameId)=>{
+                //then on callback we will join it
+                Meteor.call('games.joinGame',gameId,Meteor.userId())
+            })
         }
-    });
-
-
-
+    }
 
 
 
