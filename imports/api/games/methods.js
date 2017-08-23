@@ -17,13 +17,13 @@ Meteor.methods({
         return gameId;
     },
 
-    'games.joinGame'(gameId,currentUser) {
-        Games.upsert({_id:gameId}, {$push: {players:currentUser}});
-        Players.update({_id:currentUser}, {$set: {gameId:gameId}});
+    'games.joinGame'(gameId) {
+        Games.upsert({_id:gameId}, {$push: {players:this.userId}});
+        Meteor.users.update({_id:this.userId}, {$set: {gameId:gameId}});
     },
-    'games.leaveGame'(currentUser) {
-        const gameId = Players.findOne({_id:currentUser}).gameId;
-        Games.update({_id:gameId}, {$pull: {players:currentUser}})
+    'games.leaveGame'() {
+        const gameId = Meteor.users.findOne({_id:this.userId}).gameId;
+        Games.update({_id:gameId}, {$pull: {players:this.userId}})
     }
 
 });

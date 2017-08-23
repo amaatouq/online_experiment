@@ -16,16 +16,18 @@ import { Meteor } from 'meteor/meteor';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 Template.instructions_page.onCreated(function () {
-    //set the userStatus to be at the instructions for routing purposes
+    //now in the user database, ensure to set the current page to instructions
+    Meteor.call('users.updateUserInfo',{page:'instructions'},'set');
+
+    //set the page to be at the instructions for routing purposes
     Session.setPersistent('page','instructions');
     //set the instructionStage to be at the first page if they just arrived
     const instructionStage =  Session.get('instructionStage');
     if (!instructionStage) {
         Session.setPersistent('instructionStage','accept')
     }
-    Meteor.call('users.updateUserInfo',Meteor.userId(),{page:'instructions'},'set');
 
-    console.log();
+
 });
 
 Template.instructions_page.helpers({

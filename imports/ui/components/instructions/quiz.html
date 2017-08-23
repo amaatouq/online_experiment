@@ -22,11 +22,15 @@
 
                 {{#if passedQuiz}}
                     <div class = "alert alert-success" align="center">You have successfully passed the quiz! Click <i>"Start the game"</i> below to get matched with other players and start a game.</div>
-
                 {{/if}}
 
+                <!--in this case, you don't want it to overlap with the other alerts, so make sure it is alone-->
                 {{#if quizError}}
-                    <div class = "alert alert-warning" align="center">One or more of your answers are incorrect. You have {{remainingAttempts}} attempt(s) remaining.</div>
+                    {{#if Cond passedQuiz '==' false}}
+                        {{#if Cond exhaustedQuizAttempts '==' false}}
+                            <div class = "alert alert-warning" align="center">One or more of your answers are incorrect. You have {{remainingAttempts}} attempt(s) remaining.</div>
+                        {{/if}}
+                    {{/if}}
                 {{/if}}
 
                 {{#if exhaustedQuizAttempts}}

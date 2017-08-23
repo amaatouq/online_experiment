@@ -1,7 +1,7 @@
 import {Meteor} from 'meteor/meteor'
 
-Meteor.publish('users.user', function(currentUser) {
-    let user=  Meteor.users.find({_id:currentUser}, {
+Meteor.publish('users.user', function() {
+    let user=  Meteor.users.find({_id:this.userId}, {
         fields: {
             _id: 1,
             enterTime: 1,
@@ -15,7 +15,7 @@ Meteor.publish('users.user', function(currentUser) {
             bonus: 1,
             lobbyTimeout: 1,
             gameId: 1,
-            conditionInfo: 1
+            condInfo: 1
         }
     });
     if ( user ) {

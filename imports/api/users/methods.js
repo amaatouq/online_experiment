@@ -10,15 +10,14 @@ Meteor.methods({
     },
 
     //General purpose document modification function for the user
-    'users.updateUserInfo'(currentUser,data,operation) {
+    'users.updateUserInfo'(data,operation) {
         if (operation === 'set') {
-            Meteor.users.update(currentUser, {$set: data});
+            Meteor.users.update(this.userId, {$set: data});
         } else if (operation === 'inc') {
-            Meteor.users.update(currentUser, {$inc: data});
+            Meteor.users.update(this.userId, {$inc: data});
         } else if (operation === 'dec') {
-            Meteor.users.update(currentUser, {$dec: data});
+            Meteor.users.update(this.userId, {$dec: data});
         }
-        console.log(Meteor.user());
     }
 
 });

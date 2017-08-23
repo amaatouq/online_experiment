@@ -4,6 +4,10 @@ import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
 
 Template.lobby_page.onCreated(function() {
+    //now in the user database, ensure to set the current page to lobby
+    Meteor.call('users.updateUserInfo',{page:'lobby'},'set');
+
+
     //if there is no timer, start a new one
     if (!Session.get('sTime')) {
         Session.setPersistent('sTime',new Date());
@@ -21,12 +25,12 @@ Template.lobby_page.onCreated(function() {
         //check if there is an available game, then join it, otherwise, create a game and join it
         if (availableGame){
             console.log('the user has no game but there is a game so he will join it');
-            Meteor.call('games.joinGame',availableGame._id, Meteor.userId())
+            Meteor.call('games.joinGame',availableGame._id)
         } else {
             //no game so we will create it first
             Meteor.call('games.createGame',condition, (err,gameId)=>{
                 //then on callback we will join it
-                Meteor.call('games.joinGame',gameId,Meteor.userId())
+                Meteor.call('games.joinGame',gameId)
             })
         }
     }
