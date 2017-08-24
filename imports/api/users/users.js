@@ -1,4 +1,5 @@
 import { Random } from 'meteor/random'
+import { Games } from "../games/games";
 import '../../../lib/globals';
 // Generate user with our fields
 Accounts.onCreateUser((options, user) => {
@@ -26,3 +27,17 @@ Accounts.onCreateUser((options, user) => {
 function assignUserCondition() {
     return Random.choice(CONDITIONS)
 }
+
+//what happens to user when they disconnect or connect
+Meteor.users.find({ "status.online": true }).observe({
+    added: function(user) {
+        // user just came online
+    },
+    removed: function(user) {
+        //if the user went offline while in game, remove that user from the game
+        console.log('user went offline');
+        if (user.gameId){
+            Games.update({_id:user.gameId},{$pull: {players:user._id}});
+        }
+    }
+});

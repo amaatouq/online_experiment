@@ -17,7 +17,6 @@ import '../../ui/pages/lobby/lobby_page.js'
 import '../../ui/pages/exit/exit_page.js'
 
 
-
 //if user is not logged in, take them to consent page
 FlowRouter.triggers.enter([(context, redirect)=>{
     if(!Meteor.userId()){
@@ -30,7 +29,7 @@ FlowRouter.triggers.enter([(context, redirect)=>{
 FlowRouter.route('/', {
   name: 'landing',
   action() {
-      let userPage = Meteor.user().page;
+      let userPage = Session.get('page');
       if (userPage) {
           FlowRouter.go('/'+userPage)
       }

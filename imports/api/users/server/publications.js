@@ -33,14 +33,3 @@ Meteor.publish("users.userStatus", function(gameId) {
     return this.ready();
 
 });
-
-//what happens to user when they disconnect or connect
-Meteor.users.find({ "status.online": true }).observe({
-    added: function(id) {
-        // id just came online
-    },
-    removed: function(id) {
-        // id just went offline
-        console.log(id+' went offline')
-    }
-});

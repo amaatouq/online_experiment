@@ -4,9 +4,13 @@ import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
 
 Template.lobby_page.onCreated(function() {
+    Session.setPersistent('page','instructions');
     //now in the user database, ensure to set the current page to lobby
-    Meteor.call('users.updateUserInfo',{page:'lobby'},'set');
-
+    if (Meteor.user()){
+        if (Meteor.user().page!=='lobby'){
+            Meteor.call('users.updateUserInfo',{page:'lobby'},'set');
+        }
+    }
 
     //if there is no timer, start a new one
     if (!Session.get('sTime')) {
@@ -18,26 +22,29 @@ Template.lobby_page.onCreated(function() {
     //get the player assigned game
     const userGame = Meteor.user().gameId;
 
+    const availableGamesHandler = Meteor.subscribe('games.availableGames',condition);
 
     //if the user has no game, check if there is available game to join, or create one
-    if (!userGame) {
-        let availableGame = Games.findOne({ condition: condition, lobbyStatus:'waiting'});
-        //check if there is an available game, then join it, otherwise, create a game and join it
-        if (availableGame){
-            console.log('the user has no game but there is a game so he will join it');
-            Meteor.call('games.joinGame',availableGame._id)
+    Tracker.autorun((attachingPlayerToGame)=>{
+        //wait until the available games become ready
+        if (!userGame && availableGamesHandler.ready()) {
+            let availableGame = Games.findOne({ condition: condition, lobbyStatus:'waiting'});
+            //check if there is an available game, then join it, otherwise, create a game and join it
+            if (availableGame){
+                console.log('the user has no game but there is a game so he will join it');
+                Meteor.call('games.joinGame',availableGame._id, Meteor.userId())
+            } else {
+                //no game so we will create it first
+                Meteor.call('games.createGame',condition, (err,gameId)=>{
+                    //then on callback we will join it
+                    Meteor.call('games.joinGame',gameId,Meteor.userId())
+                })
+            }
+            attachingPlayerToGame.stop();
         } else {
-            //no game so we will create it first
-            Meteor.call('games.createGame',condition, (err,gameId)=>{
-                //then on callback we will join it
-                Meteor.call('games.joinGame',gameId)
-            })
+            //availableGamesHandler.stop();
         }
-    }
-
-
-
-
+    });
 
 
 });
@@ -46,14 +53,12 @@ Template.lobby_page.onCreated(function() {
 Template.lobby_page.helpers({
 
     desiredNumPlayers(){
-        const playerData = Meteor.user.findOne(Meteor.userId());
-        const GROUPS_SIZE = playerData.condition+'.GROUPS_SIZE';
-        return GROUPS_SIZE.split('.').reduce((o, i) => o[i], CONDITIONS_SETTINGS);
+        return Meteor.user().condInfo.groupSize;
     },
 
     numWaiting(){
-        //todo figure out how many in the same lobby
-        return 4
+        console.log(Games.findOne({players:Meteor.userId()}));
+        return Games.findOne({players:Meteor.userId()}).players.length
     },
 
     //doing the clock and as well the timeout

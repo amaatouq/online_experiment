@@ -7,15 +7,13 @@ Tracker.autorun(function(){
     Meteor.subscribe('users.user');
 });
 
-
-
-//Reactively subscribe to the databases as the information become available
+//Reactively subscribe to the databases about available games once we assign a condition to the user
 Tracker.autorun(function(){
     if (Meteor.user()){
-        let condition = Meteor.user().cond;
+        let gameId = Meteor.user().gameId;
         //once assigned a condition, then start listening for potential available games for that condition
-        if (condition){
-            Meteor.subscribe('games.availableGames',condition);
+        if (gameId){
+            Meteor.subscribe('games.userGame');
         }
     }
 });

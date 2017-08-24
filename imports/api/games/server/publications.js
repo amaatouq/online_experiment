@@ -9,3 +9,11 @@ Meteor.publish('games.availableGames', function (condition) {
     }
     return this.ready();
 });
+
+Meteor.publish('games.userGame', function () {
+    let userGame = Games.find( { players: this.userId });
+    if ( userGame ) {
+        return userGame;
+    }
+    return this.ready();
+});
