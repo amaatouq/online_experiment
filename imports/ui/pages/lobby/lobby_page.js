@@ -1,16 +1,18 @@
 import './lobby_page.html';
-import { Games } from '../../../api/games/games';
+import '../loader/loader';
+import { Lobbies } from '../../../api/lobbies/lobbies';
 import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
 
 Template.lobby_page.onCreated(function() {
-    Session.setPersistent('page','instructions');
+    Session.setPersistent('page','lobby');
     //now in the user database, ensure to set the current page to lobby
     if (Meteor.user()){
         if (Meteor.user().page!=='lobby'){
             Meteor.call('users.updateUserInfo',{page:'lobby'},'set');
         }
     }
+
 
     //if there is no timer, start a new one
     if (!Session.get('sTime')) {
@@ -19,30 +21,31 @@ Template.lobby_page.onCreated(function() {
 
     //get the player condition
     const condition = Meteor.user().condition;
-    //get the player assigned game
-    const userGame = Meteor.user().gameId;
+    //get the player assigned lobby
+    const userLobby = Meteor.user().lobbyId;
 
-    const availableGamesHandler = Meteor.subscribe('games.availableGames',condition);
+    const availableLobbiesHandler = this.subscribe('lobbies.availableLobbies',condition);
+    this.subscribe('lobbies.userLobby');
 
-    //if the user has no game, check if there is available game to join, or create one
-    Tracker.autorun((attachingPlayerToGame)=>{
-        //wait until the available games become ready
-        if (!userGame && availableGamesHandler.ready()) {
-            let availableGame = Games.findOne({ condition: condition, lobbyStatus:'waiting'});
-            //check if there is an available game, then join it, otherwise, create a game and join it
-            if (availableGame){
-                console.log('the user has no game but there is a game so he will join it');
-                Meteor.call('games.joinGame',availableGame._id, Meteor.userId())
+    //if the user has no lobby, check if there is available lobby to join, or create one
+    this.autorun((attachingUserToLobby)=>{
+        //wait until the available lobbies become ready
+        if (!userLobby && availableLobbiesHandler.ready()) {
+            let availableLobby = Lobbies.findOne({ condition: condition, lobbyStatus:'waiting'});
+            //check if there is an available lobby, then join it, otherwise, create a lobby and join it
+            if (availableLobby){
+                console.log('the user has no lobby but there is a lobby so he will join it');
+                Meteor.call('lobbies.joinLobby',availableLobby._id, Meteor.userId())
             } else {
-                //no game so we will create it first
-                Meteor.call('games.createGame',condition, (err,gameId)=>{
+                //no lobby so we will create it first
+                Meteor.call('lobbies.createLobby',condition, (err,lobbyId)=>{
                     //then on callback we will join it
-                    Meteor.call('games.joinGame',gameId,Meteor.userId())
+                    Meteor.call('lobbies.joinLobby',lobbyId)
                 })
             }
-            attachingPlayerToGame.stop();
+            attachingUserToLobby.stop();
         } else {
-            //availableGamesHandler.stop();
+            //availableLobbiesHandler.stop();
         }
     });
 
@@ -53,12 +56,18 @@ Template.lobby_page.onCreated(function() {
 Template.lobby_page.helpers({
 
     desiredNumPlayers(){
-        return Meteor.user().condInfo.groupSize;
+        if (Meteor.userId()){
+            return Meteor.user().condInfo.groupSize;
+        }
     },
 
     numWaiting(){
-        console.log(Games.findOne({players:Meteor.userId()}));
-        return Games.findOne({players:Meteor.userId()}).players.length
+        if (Meteor.userId()){
+            let lobby = Lobbies.findOne({players:Meteor.userId()});
+            if (lobby){
+                return lobby.players.length
+            }
+        }
     },
 
     //doing the clock and as well the timeout
@@ -75,7 +84,7 @@ Template.lobby_page.helpers({
         //if the minutes are the same as the lobby_timeout take them to the exit survey
         if (Session.get('min') >= LOBBY_TIMEOUT) {
             Meteor.call('users.updateUserInfo',Meteor.userId(),{exitStatus:'lobbyTimeout'},'set');
-            Session.setPersistent('userStatus','exit');
+            Session.setPersistent('page','exit');
             Meteor.call('users.updateUserInfo',Meteor.userId(),{page:'exit'},'set');
             FlowRouter.go('/exit');
         }
@@ -89,3 +98,4 @@ Template.lobby_page.helpers({
     }
 
 });
+

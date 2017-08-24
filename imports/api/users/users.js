@@ -1,5 +1,5 @@
 import { Random } from 'meteor/random'
-import { Games } from "../games/games";
+import { Lobbies } from "../lobbies/lobbies.js";
 import '../../../lib/globals';
 // Generate user with our fields
 Accounts.onCreateUser((options, user) => {
@@ -14,7 +14,8 @@ Accounts.onCreateUser((options, user) => {
     user.score= 0;
     user.bonus= 0;
     user.lobbyTimeout= LOBBY_TIMEOUT;
-    user.gameId= null;
+    user.lobbyId= null;
+    user.gameId=null;
     user.condInfo = {name: cond,
         groupSize: (cond+'.GROUPS_SIZE').split('.').reduce((o, i) => o[i], CONDITIONS_SETTINGS),
         bonusConversion: (cond+'.BONUS_CONVERSION').split('.').reduce((o, i) => o[i], CONDITIONS_SETTINGS),
@@ -34,10 +35,12 @@ Meteor.users.find({ "status.online": true }).observe({
         // user just came online
     },
     removed: function(user) {
-        //if the user went offline while in game, remove that user from the game
-        console.log('user went offline');
-        if (user.gameId){
-            Games.update({_id:user.gameId},{$pull: {players:user._id}});
+        //if the user went offline while in the lobby, remove that user from the lobby
+        if (user.page==='lobby'){
+            Lobbies.update({_id:user.lobbyId},{$pull: {players:user._id}});
+        }
+        else if (user.page==='game'){
+            //todo what happens to users when they leave the game
         }
     }
 });

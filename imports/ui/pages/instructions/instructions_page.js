@@ -1,5 +1,6 @@
 //import the relevant page
 import './instructions_page.html';
+import '../loader/loader';
 
 //import the components
 import'../../components/instructions/progress.js' //progress bar
@@ -27,7 +28,6 @@ Template.instructions_page.onCreated(function () {
         Session.setPersistent('instructionStage','accept')
     }
 
-
 });
 
 Template.instructions_page.helpers({
@@ -48,18 +48,26 @@ Template.instructions_page.helpers({
         return Session.get('instructionStage') === 'quiz';
     },
     userCondition (){
-        return Meteor.user().condition;
+        if (Meteor.user()){
+            return Meteor.user().condition;
+        }
     },
     groupSize (){
-        return Meteor.user().condInfo.groupSize;
+        if (Meteor.user()) {
+            return Meteor.user().condInfo.groupSize;
+        }
     },
     nRounds(){
-        return Meteor.user().condInfo.nRounds;
+        if (Meteor.user()) {
+            return Meteor.user().condInfo.nRounds;
+        }
     },
 
     nStages() {
         //return 2 if it is in control condition or 3 if in other conditions
-        return Meteor.user().condition === 'control'? 2 : 3;
+        if (Meteor.user()) {
+            return Meteor.user().condition === 'control' ? 2 : 3;
+        }
     },
     //animation of the sliding templates using /#transition but it is still NOT working
 });

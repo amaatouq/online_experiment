@@ -1,32 +1,33 @@
 <template name="instructions_page">
-    <div>
-    {{> progress
+    {{#if Template.subscriptionsReady}}
+        {{> progress
             acceptStage=acceptStage overviewStage=overviewStage roundsStage=roundsStage
             exampleStage=exampleStage quizStage=quizStage}}
-    <div class = "container-fluid" id = "main">
-        {{#if acceptStage}}
-            {{> accept
-                    groupSize=groupSize notControl= (Cond userCondition '!=' 'control') }}
-        {{/if}}
-        {{#if overviewStage}}
-            {{> overview
-                    nRounds=nRounds}}
-        {{/if}}
+        <div class = "container-fluid" id = "main">
+            {{#if acceptStage}}
+                {{> accept
+                        groupSize=groupSize notControl= (Cond userCondition '!=' 'control') }}
+            {{/if}}
+            {{#if overviewStage}}
+                {{> overview
+                        nRounds=nRounds}}
+            {{/if}}
 
-        {{#if roundsStage}}
-            {{> rounds
-                    nStages=nStages notControl=(Cond userCondition '!=' 'control')
-                    isT1=(Cond userCondition '==' 'T1')
-                    isT2=(Cond userCondition '==' 'T2')
-                    isControl=(Cond userCondition '==' 'control')}}
+            {{#if roundsStage}}
+                {{> rounds
+                        nStages=nStages notControl=(Cond userCondition '!=' 'control')
+                        isT1=(Cond userCondition '==' 'T1')
+                        isT2=(Cond userCondition '==' 'T2')
+                        isControl=(Cond userCondition '==' 'control')}}
+            {{/if}}
+            {{#if exampleStage}}
+                {{> example}}
+            {{/if}}
+            {{#if quizStage}}
+                {{> quiz}}
+            {{/if}}
+        </div>
+        {{else}}
+            {{>loader}}
         {{/if}}
-        {{#if exampleStage}}
-            {{> example}}
-        {{/if}}
-        {{#if quizStage}}
-            {{> quiz}}
-        {{/if}}
-
-    </div>
-    </div>
 </template>

@@ -489,3 +489,12 @@ ul.nav-wizard.nav-wizard-backnav .active ~ li a:focus {
   background-color: transparent;
   text-align: center;
 }
+
+/*loader stuff from  https://themeteorchef.com/tutorials/loading-patterns*/
+.loader {
+  display: none;
+}
+
+.loading-wrapper {
+  display: none;
+}

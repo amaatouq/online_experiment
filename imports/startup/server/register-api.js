@@ -5,9 +5,9 @@ import '../../api/users/users.js';
 import '../../api/users/methods.js';
 import '../../api/users/server/publications';
 
-//registering games
-import '../../api/games/methods.js';
-import '../../api/games/server/publications.js';
+//registering lobbies
+import '../../api/lobbies/methods.js';
+import '../../api/lobbies/server/publications.js';
 
 
 

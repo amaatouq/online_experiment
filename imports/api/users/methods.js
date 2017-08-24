@@ -2,11 +2,10 @@ import { Meteor } from 'meteor/meteor';
 
 Meteor.methods({
     'users.createUser'(random_username,random_password) {
-        user = Accounts.createUser({
+        return Accounts.createUser({
             username: random_username,
             password: random_password
         });
-        return user;
     },
 
     //General purpose document modification function for the user

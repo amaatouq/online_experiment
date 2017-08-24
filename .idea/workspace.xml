@@ -2,12 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f494e6dd-973d-4920-a25f-87c659030832" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/api/games/server/publications.js" afterPath="$PROJECT_DIR$/imports/api/games/server/publications.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/api/users/server/publications.js" afterPath="$PROJECT_DIR$/imports/api/users/server/publications.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imports/ui/pages/loader/loader.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imports/ui/pages/loader/loader.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/imports/api/players/methods.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/imports/api/players/players.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/imports/api/players/server/publications.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/imports/api/games/games.js" afterPath="$PROJECT_DIR$/imports/api/lobbies/lobbies.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/imports/api/games/methods.js" afterPath="$PROJECT_DIR$/imports/api/lobbies/methods.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/imports/api/games/server/publications.js" afterPath="$PROJECT_DIR$/imports/api/lobbies/server/publications.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" afterPath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/packages" afterPath="$PROJECT_DIR$/.meteor/packages" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/versions" afterPath="$PROJECT_DIR$/.meteor/versions" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/api/users/methods.js" afterPath="$PROJECT_DIR$/imports/api/users/methods.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/api/users/users.js" afterPath="$PROJECT_DIR$/imports/api/users/users.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/startup/client/index.js" afterPath="$PROJECT_DIR$/imports/startup/client/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/startup/client/routes.js" afterPath="$PROJECT_DIR$/imports/startup/client/routes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/startup/server/register-api.js" afterPath="$PROJECT_DIR$/imports/startup/server/register-api.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/layout/header_layout.js" afterPath="$PROJECT_DIR$/imports/ui/components/layout/header_layout.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/pages/instructions/instructions_page.html" afterPath="$PROJECT_DIR$/imports/ui/pages/instructions/instructions_page.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/pages/instructions/instructions_page.js" afterPath="$PROJECT_DIR$/imports/ui/pages/instructions/instructions_page.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/pages/lobby/lobby_page.html" afterPath="$PROJECT_DIR$/imports/ui/pages/lobby/lobby_page.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/pages/lobby/lobby_page.js" afterPath="$PROJECT_DIR$/imports/ui/pages/lobby/lobby_page.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/stylesheets/style.css" afterPath="$PROJECT_DIR$/imports/ui/stylesheets/style.css" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,53 +37,104 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="users.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/imports/api/users/users.js">
+      <file leaf-file-name="instructions_page.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/imports/ui/pages/instructions/instructions_page.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="41" lean-forward="false" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
+            <state relative-caret-position="323">
+              <caret line="68" column="22" lean-forward="false" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
               <folding>
-                <element signature="e#0#38#0" expanded="true" />
+                <element signature="e#27#61#0" expanded="true" />
+                <element signature="e#179#226#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="methods.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/imports/api/users/methods.js">
+      <file leaf-file-name="accept.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/components/instructions/accept.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="25" />
+            <state relative-caret-position="150">
+              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="instructions_page.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/imports/ui/pages/instructions/instructions_page.js">
+      <file leaf-file-name="example.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/components/instructions/example.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="22" column="4" lean-forward="false" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="49" />
+            <state relative-caret-position="210">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lobby_page.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/imports/ui/pages/lobby/lobby_page.js">
+      <file leaf-file-name="overview.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/components/instructions/overview.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="46" column="7" lean-forward="false" selection-start-line="46" selection-start-column="7" selection-end-line="46" selection-end-column="7" />
+            <state relative-caret-position="210">
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/imports/startup/client/routes.js">
+      <file leaf-file-name="progress.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/components/instructions/progress.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="31" column="41" lean-forward="false" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+            <state relative-caret-position="90">
+              <caret line="7" column="3" lean-forward="false" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="quiz.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/components/instructions/quiz.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1485">
+              <caret line="102" column="6" lean-forward="false" selection-start-line="102" selection-start-column="6" selection-end-line="102" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rounds.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/components/instructions/rounds.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header_layout.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/components/layout/header_layout.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header_layout.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/components/layout/header_layout.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="instructions_page.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/pages/instructions/instructions_page.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="27" column="19" lean-forward="false" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -85,9 +152,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>current§</find>
-      <find>previous-button</find>
-      <find>call('players.addPlayer'</find>
       <find>br</find>
       <find>lobb</find>
       <find>joinLobby</find>
@@ -110,14 +174,18 @@
       <find>page</find>
       <find>lobby</find>
       <find>usersTatus</find>
-      <find>page</find>
       <find>user.find</find>
       <find>condition</find>
       <find>sub</find>
       <find>went offline</find>
+      <find>games</find>
+      <find>Games</find>
+      <find>lobbys</find>
+      <find>game</find>
     </findStrings>
     <replaceStrings>
       <replace />
+      <replace>Lobbies</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -129,16 +197,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/imports/startup/both/globals.js" />
-        <option value="$PROJECT_DIR$/imports/api/players/server/publications.js" />
-        <option value="$PROJECT_DIR$/imports/startup/both/useraccounts-configuration.js" />
         <option value="$PROJECT_DIR$/client/head.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/layout/header_layout.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/instructions/progress.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/instructions/progress.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/instructions/example.html" />
         <option value="$PROJECT_DIR$/.meteor/local/build/programs/web.browser/packages/blaze.js" />
-        <option value="$PROJECT_DIR$/imports/ui/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/imports/ui/pages/consent/consent_page.html" />
         <option value="$PROJECT_DIR$/imports/ui/pages/endSurvey/exit_page.js" />
         <option value="$PROJECT_DIR$/imports/ui/pages/endSurvey/exit_page.html" />
@@ -146,20 +210,15 @@
         <option value="$PROJECT_DIR$/imports/ui/components/instructions/overview.html" />
         <option value="$PROJECT_DIR$/imports/ui/pages/lobby/lobby.js" />
         <option value="$PROJECT_DIR$/imports/ui/pages/lobby/lobby.html" />
-        <option value="$PROJECT_DIR$/imports/ui/pages/lobby/lobby_page.html" />
         <option value="$PROJECT_DIR$/imports/api/lobbys/lobys.js" />
         <option value="$PROJECT_DIR$/imports/api/lobbys/lobbies.js" />
         <option value="$PROJECT_DIR$/imports/api/lobbys/methods.js" />
         <option value="$PROJECT_DIR$/imports/api/games/games.js" />
         <option value="$PROJECT_DIR$/imports/api/counters.js" />
         <option value="$PROJECT_DIR$/imports/api/helpers/counters.js" />
-        <option value="$PROJECT_DIR$/imports/api/lobbies/lobbies.js" />
-        <option value="$PROJECT_DIR$/imports/api/lobbies/methods.js" />
         <option value="$PROJECT_DIR$/lib/globals.js" />
         <option value="$PROJECT_DIR$/imports/api/players/methods.js" />
-        <option value="$PROJECT_DIR$/imports/startup/server/register-api.js" />
         <option value="$PROJECT_DIR$/imports/api/users/server/methods.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/layout/header_layout.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/instructions/accept.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/instructions/example.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/instructions/overview.js" />
@@ -167,19 +226,28 @@
         <option value="$PROJECT_DIR$/imports/ui/pages/exit/exit_page.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/instructions/accept.html" />
         <option value="$PROJECT_DIR$/imports/api/games/methods.js" />
-        <option value="$PROJECT_DIR$/imports/api/users/methods.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/instructions/quiz.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/instructions/rounds.html" />
-        <option value="$PROJECT_DIR$/imports/ui/pages/instructions/instructions_page.html" />
         <option value="$PROJECT_DIR$/imports/ui/pages/consent/consent_page.js" />
-        <option value="$PROJECT_DIR$/imports/ui/pages/instructions/instructions_page.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/instructions/quiz.html" />
         <option value="$PROJECT_DIR$/imports/api/games/server/publications.js" />
-        <option value="$PROJECT_DIR$/imports/startup/client/index.js" />
         <option value="$PROJECT_DIR$/imports/api/users/server/publications.js" />
-        <option value="$PROJECT_DIR$/imports/api/users/users.js" />
         <option value="$PROJECT_DIR$/imports/startup/client/routes.js" />
+        <option value="$PROJECT_DIR$/imports/api/lobbies/lobbies.js" />
+        <option value="$PROJECT_DIR$/imports/startup/server/register-api.js" />
+        <option value="$PROJECT_DIR$/imports/api/users/methods.js" />
+        <option value="$PROJECT_DIR$/imports/api/lobbies/server/publications.js" />
+        <option value="$PROJECT_DIR$/imports/startup/client/index.js" />
+        <option value="$PROJECT_DIR$/imports/api/lobbies/methods.js" />
+        <option value="$PROJECT_DIR$/imports/api/users/users.js" />
+        <option value="$PROJECT_DIR$/imports/ui/stylesheets/style.css" />
+        <option value="$PROJECT_DIR$/imports/ui/pages/lobby/lobby_page.html" />
+        <option value="$PROJECT_DIR$/imports/ui/pages/loader/loader.html" />
+        <option value="$PROJECT_DIR$/imports/ui/pages/loader/loader.js" />
         <option value="$PROJECT_DIR$/imports/ui/pages/lobby/lobby_page.js" />
+        <option value="$PROJECT_DIR$/imports/ui/pages/instructions/instructions_page.html" />
+        <option value="$PROJECT_DIR$/imports/ui/components/layout/header_layout.js" />
+        <option value="$PROJECT_DIR$/imports/ui/pages/instructions/instructions_page.js" />
       </list>
     </option>
   </component>
@@ -245,7 +313,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -257,6 +324,34 @@
               <item name="online_expeirment" type="b2602c69:ProjectViewProjectNode" />
               <item name="online_expeirment" type="462c0819:PsiDirectoryNode" />
               <item name="imports" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="online_expeirment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="online_expeirment" type="462c0819:PsiDirectoryNode" />
+              <item name="imports" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="online_expeirment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="online_expeirment" type="462c0819:PsiDirectoryNode" />
+              <item name="imports" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="lobbies" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="online_expeirment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="online_expeirment" type="462c0819:PsiDirectoryNode" />
+              <item name="imports" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="lobbies" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="online_expeirment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="online_expeirment" type="462c0819:PsiDirectoryNode" />
+              <item name="imports" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="users" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="online_expeirment" type="b2602c69:ProjectViewProjectNode" />
@@ -296,6 +391,22 @@
               <item name="online_expeirment" type="462c0819:PsiDirectoryNode" />
               <item name="imports" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="instructions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="online_expeirment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="online_expeirment" type="462c0819:PsiDirectoryNode" />
+              <item name="imports" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="online_expeirment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="online_expeirment" type="462c0819:PsiDirectoryNode" />
+              <item name="imports" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -312,7 +423,22 @@
               <item name="imports" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="loader" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="online_expeirment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="online_expeirment" type="462c0819:PsiDirectoryNode" />
+              <item name="imports" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="lobby" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="online_expeirment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="online_expeirment" type="462c0819:PsiDirectoryNode" />
+              <item name="imports" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="stylesheets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="online_expeirment" type="b2602c69:ProjectViewProjectNode" />
@@ -323,6 +449,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -397,7 +524,8 @@
       <workItem from="1503416320039" duration="20162000" />
       <workItem from="1503440909222" duration="8104000" />
       <workItem from="1503458954899" duration="9696000" />
-      <workItem from="1503524950439" duration="5355000" />
+      <workItem from="1503524950439" duration="5953000" />
+      <workItem from="1503599830913" duration="7030000" />
     </task>
     <task id="LOCAL-00001" summary="Starting the general framework for online synchronous experimentation">
       <created>1502894396220</created>
@@ -410,7 +538,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162171000" />
+    <option name="totallyTimeSpent" value="169799000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="814" extended-state="0" />
@@ -471,27 +599,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/layout/header_layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/layouts/experimentLayout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="42" lean-forward="false" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/instructions/progress.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="11" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.meteor/local/plugin-cache/ecmascript/0.8.2/665dc0c3bd16bd0c32396ad55181c14bd22bcf7e.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -510,13 +617,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2">
           <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/stylesheets/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="490" column="1" lean-forward="false" selection-start-line="490" selection-start-column="1" selection-end-line="490" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -562,13 +662,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/pages/lobby/lobby_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/api/helpers/counters.js" />
     <entry file="file://$PROJECT_DIR$/imports/api/lobbies/lobbies.js" />
     <entry file="file://$PROJECT_DIR$/imports/api/lobbies/methods.js" />
@@ -583,23 +676,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/api/games/games.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="36" lean-forward="false" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/api/players/methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="28" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -621,42 +697,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="18" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/layout/header_layout.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="14" column="45" lean-forward="true" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/instructions/rounds.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/instructions/progress.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/instructions/overview.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/instructions/example.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -664,9 +704,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-127">
           <caret line="20" column="32" lean-forward="false" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#35#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -674,15 +711,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="33" column="16" lean-forward="false" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/instructions/accept.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -694,24 +722,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/api/games/methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/instructions/quiz.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="102" column="6" lean-forward="true" selection-start-line="102" selection-start-column="6" selection-end-line="102" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#20#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/instructions/rounds.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
@@ -720,19 +730,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/pages/instructions/instructions_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.meteor/local/plugin-cache/ecmascript/0.8.2/88b44d4daff676090e00e36e34c2b4681f341a54.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="2502" lean-forward="false" selection-start-line="0" selection-start-column="2502" selection-end-line="0" selection-end-column="2502" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -740,7 +741,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -752,45 +752,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/api/games/server/publications.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="3" lean-forward="false" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#38#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/startup/client/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="18" column="3" lean-forward="false" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/startup/server/fixtures.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="31" lean-forward="true" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/startup/server/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="59" lean-forward="false" selection-start-line="0" selection-start-column="59" selection-end-line="0" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/startup/server/register-api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -798,32 +763,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="383">
           <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/api/users/methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/api/users/users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="41" lean-forward="false" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/pages/instructions/instructions_page.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="22" column="4" lean-forward="false" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="49" />
           <folding />
         </state>
       </provider>
@@ -836,11 +775,211 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/imports/api/players/methods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="27" column="12" lean-forward="false" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/api/users/methods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/startup/client/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#60#81#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/api/lobbies/lobbies.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="52" lean-forward="false" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/startup/server/register-api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <element signature="e#48#82#0" expanded="false" />
+            <element signature="e#189#227#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/startup/server/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="59" lean-forward="false" selection-start-line="0" selection-start-column="59" selection-end-line="0" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/api/lobbies/server/publications.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="43" lean-forward="false" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#38#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/api/lobbies/methods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/api/users/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#38#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/stylesheets/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="492" column="73" lean-forward="false" selection-start-line="492" selection-start-column="73" selection-end-line="492" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/pages/loader/loader.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#svg#0;n#template#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/pages/loader/loader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/pages/lobby/lobby_page.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="46" column="7" lean-forward="false" selection-start-line="46" selection-start-column="7" selection-end-line="46" selection-end-column="7" />
+        <state relative-caret-position="15">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="26" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/pages/lobby/lobby_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-321">
+          <caret line="1" column="18" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/pages/instructions/instructions_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="19" lean-forward="false" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/instructions/accept.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/instructions/example.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/instructions/overview.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/instructions/progress.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" column="3" lean-forward="false" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/instructions/quiz.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1485">
+          <caret line="102" column="6" lean-forward="false" selection-start-line="102" selection-start-column="6" selection-end-line="102" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/layout/header_layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/instructions/rounds.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/layout/header_layout.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/pages/instructions/instructions_page.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="68" column="22" lean-forward="false" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
+          <folding>
+            <element signature="e#27#61#0" expanded="true" />
+            <element signature="e#179#226#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
