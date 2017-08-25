@@ -24,28 +24,37 @@ Template.lobby_page.onCreated(function() {
     //get the player assigned lobby
     const userLobby = Meteor.user().lobbyId;
 
-    const availableLobbiesHandler = this.subscribe('lobbies.availableLobbies',condition);
     this.subscribe('lobbies.userLobby');
+    const availableLobbiesHandler = this.subscribe('lobbies.availableLobbies',condition);
 
     //if the user has no lobby, check if there is available lobby to join, or create one
     this.autorun((attachingUserToLobby)=>{
-        //wait until the available lobbies become ready
-        if (!userLobby && availableLobbiesHandler.ready()) {
-            let availableLobby = Lobbies.findOne({ condition: condition, lobbyStatus:'waiting'});
-            //check if there is an available lobby, then join it, otherwise, create a lobby and join it
-            if (availableLobby){
-                console.log('the user has no lobby but there is a lobby so he will join it');
-                Meteor.call('lobbies.joinLobby',availableLobby._id, Meteor.userId())
-            } else {
-                //no lobby so we will create it first
-                Meteor.call('lobbies.createLobby',condition, (err,lobbyId)=>{
-                    //then on callback we will join it
-                    Meteor.call('lobbies.joinLobby',lobbyId)
-                })
+        if (!userLobby) {
+            //if user doesn't have a lobby wait until the available lobbies become ready
+            if (availableLobbiesHandler.ready()){
+                let availableLobby = Lobbies.findOne({ condition: condition, lobbyStatus:'waiting'});
+                //check if there is an available lobby, then join it, otherwise, create a lobby and join it
+                if (availableLobby){
+                    console.log('the user has no lobby but there is a lobby so he will join it');
+                    Meteor.call('lobbies.joinLobby',availableLobby._id, Meteor.userId())
+                } else {
+                    //no lobby so we will create it first
+                    Meteor.call('lobbies.createLobby',condition, (err,lobbyId)=>{
+                        //then on callback we will join it
+                        Meteor.call('lobbies.joinLobby',lobbyId)
+                    })
+                }
+                attachingUserToLobby.stop();
             }
-            attachingUserToLobby.stop();
         } else {
-            //availableLobbiesHandler.stop();
+            //the user has a lobbyId already, make sure he re-joins the lobby
+            //inside the joinLobby, we check that the lobby isn't full already
+            let lobby = Lobbies.findOne({players:Meteor.userId()});
+            if (!lobby){
+                Meteor.call('lobbies.joinLobby',Meteor.user().lobbyId)
+            }
+
+
         }
     });
 
