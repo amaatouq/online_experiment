@@ -36,7 +36,11 @@ Meteor.users.find({ "status.online": true }).observe({
     },
     removed: function(user) {
         //if the user went offline while in the lobby, remove that user from the lobby
-        if (user.page==='lobby'){
+        const activeLobby = Lobbies.findOne({_id:user.lobbyId,
+            players:user._id,
+            lobbyStatus:'waiting'});
+        if (user.page==='lobby' || activeLobby){
+            console.log('will remove from the lobby');
             Lobbies.update({_id:user.lobbyId},{$pull: {players:user._id}});
         }
         else if (user.page==='game'){

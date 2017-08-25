@@ -7,9 +7,28 @@
                 <h3 align="center">You are not eligible for this HIT</h3>
                 <p>It appears that you did not pass our comprehension quiz and therefore cannot
                     participate</p>
+                <p align="center">Please submit the following code to be able to follow up with us:
+                    <strong>{{currentUser}}</strong></p>
             {{/if}}
-            <p align="center">Please submit the following code to receive your bonus: <strong>{{currentUser._id}}</strong></p>
-            <p align="center">Your final <b>bonus</b> is {{score}} in addition of the <b>$2 base reward</b> for completing the HIT.</p>
+
+            {{#if exitStatus.leftGame}}
+                <h3 align="center">You are not eligible to be paid for this HIT</h3>
+                <p>It appears that you left the game and did not participate</p>
+                <p align="center">Please submit the following code to be able to follow up with us:
+                    <strong>{{currentUser}}</strong></p>
+            {{/if}}
+
+            {{#if exitStatus.finished}}
+                <h3 align="center">Thank you for participating in this HIT</h3>
+                <p>It appears that you left the game and did not participate</p>
+            {{/if}}
+
+            {{#if exitStatus.eligible}}
+                <p align="center">Please submit the following code to receive your bonus: <strong>{{currentUser}}</strong></p>
+                <p align="center">Your final <b>bonus</b> is {{score}} in addition of the
+                    <b>{{baseReward}} base reward</b> for completing the HIT.</p>
+            {{/if}}
+
             <hr>
         </div>
     </div>  

@@ -16,12 +16,20 @@ import '../../ui/pages/instructions/instructions_page.js'
 import '../../ui/pages/lobby/lobby_page.js'
 import '../../ui/pages/exit/exit_page.js'
 
+import '../../ui/pages/clear_page/clear_page';
 
 //if user is not logged in, take them to consent page
 FlowRouter.triggers.enter([(context, redirect)=>{
-    if(!Meteor.userId()){
+    //if first time they arrive, take them to consent
+    if(!Meteor.userId() && !Session.get('username')) {
         FlowRouter.go('/consent')
-    }
+    } //else if (FlowRouter.current().path ==='/clear') {
+    //     //if going to clear, nothing should stop you
+    //     FlowRouter.go('/clear')
+    // } else if (!Meteor.userId() && Session.get('username')){
+    //     //if the user is logged out but has an old session, take them to the exit Survey
+    //     FlowRouter.go('/exit')
+    // }
 }]);
 
 
@@ -29,6 +37,7 @@ FlowRouter.triggers.enter([(context, redirect)=>{
 FlowRouter.route('/', {
   name: 'landing',
   action() {
+
       let userPage = Session.get('page');
       if (userPage) {
           FlowRouter.go('/'+userPage)
@@ -102,6 +111,18 @@ FlowRouter.route( '/game', {
     },
     name: 'gameRoute'
 });
+
+FlowRouter.route( '/clear', {
+    action() {
+        BlazeLayout.render( 'experimentLayout', {
+            header: 'header_layout',
+            page: 'clear_page',
+            footer: 'footer_layout',
+        });
+    },
+    name: 'clearSession'
+});
+
 
 
 

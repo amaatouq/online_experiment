@@ -19,9 +19,10 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 Template.instructions_page.onCreated(function () {
     //now in the user database, ensure to set the current page to instructions
     Meteor.call('users.updateUserInfo',{page:'instructions'},'set');
-
     //set the page to be at the instructions for routing purposes
     Session.setPersistent('page','instructions');
+    Session.setPersistent('username',Meteor.userId());
+
     //set the instructionStage to be at the first page if they just arrived
     const instructionStage =  Session.get('instructionStage');
     if (!instructionStage) {
@@ -48,26 +49,17 @@ Template.instructions_page.helpers({
         return Session.get('instructionStage') === 'quiz';
     },
     userCondition (){
-        if (Meteor.user()){
-            return Meteor.user().condition;
-        }
+        return Meteor.user().condition;
     },
     groupSize (){
-        if (Meteor.user()) {
-            return Meteor.user().condInfo.groupSize;
-        }
+        return Meteor.user().condInfo.groupSize;
     },
     nRounds(){
-        if (Meteor.user()) {
-            return Meteor.user().condInfo.nRounds;
-        }
+        return Meteor.user().condInfo.nRounds;
     },
-
     nStages() {
         //return 2 if it is in control condition or 3 if in other conditions
-        if (Meteor.user()) {
-            return Meteor.user().condition === 'control' ? 2 : 3;
-        }
+        return Meteor.user().condition === 'control' ? 2 : 3;
     },
     //animation of the sliding templates using /#transition but it is still NOT working
 });

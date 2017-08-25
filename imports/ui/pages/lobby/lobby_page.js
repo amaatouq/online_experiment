@@ -92,9 +92,13 @@ Template.lobby_page.helpers({
         }, 900);
         //if the minutes are the same as the lobby_timeout take them to the exit survey
         if (Session.get('min') >= LOBBY_TIMEOUT) {
-            Meteor.call('users.updateUserInfo',Meteor.userId(),{exitStatus:'lobbyTimeout'},'set');
+            //set teh reason of the exit
+            Meteor.call('users.updateUserInfo',{exitStatus:'lobbyTimeout'},'set');
+            Session.setPersistent('exitStatus','lobbyTimeout');
+
+            //set the page
+            Meteor.call('users.updateUserInfo',{page:'exit'},'set');
             Session.setPersistent('page','exit');
-            Meteor.call('users.updateUserInfo',Meteor.userId(),{page:'exit'},'set');
             FlowRouter.go('/exit');
         }
         return {
