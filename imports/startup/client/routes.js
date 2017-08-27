@@ -23,9 +23,16 @@ FlowRouter.triggers.enter([(context, redirect)=>{
     //if first time they arrive, take them to consent
     if(!Meteor.userId() && !Session.get('username')) {
         FlowRouter.go('/consent')
-    } //else if (FlowRouter.current().path ==='/clear') {
+    } else if (!Meteor.userId() && Session.get('username') &&
+        (FlowRouter.current().path !=='/clear')) {
+        FlowRouter.go('/exit')
+    } else if (FlowRouter.current().path ==='/clear') {
+        FlowRouter.go('/clear')
+    }
+
+    //else if (FlowRouter.current().path ==='/clear') {
     //     //if going to clear, nothing should stop you
-    //     FlowRouter.go('/clear')
+    //
     // } else if (!Meteor.userId() && Session.get('username')){
     //     //if the user is logged out but has an old session, take them to the exit Survey
     //     FlowRouter.go('/exit')

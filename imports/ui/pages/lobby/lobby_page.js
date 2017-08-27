@@ -3,6 +3,7 @@ import '../loader/loader';
 import { Lobbies } from '../../../api/lobbies/lobbies';
 import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 Template.lobby_page.onCreated(function() {
     Session.setPersistent('page','lobby');
@@ -59,6 +60,18 @@ Template.lobby_page.onCreated(function() {
     });
 
 
+    //start the game once we have the correct number of players
+    this.autorun(()=>{
+        let lobby = Lobbies.findOne({players:Meteor.userId()});
+        if (lobby){
+            if (lobby.lobbyStatus === 'full'){
+                new Audio("bell.mp3").play();
+                FlowRouter.go('/game');
+            }
+        }
+
+    });
+
 });
 
 
@@ -70,10 +83,12 @@ Template.lobby_page.helpers({
         }
     },
 
-    numWaiting(){
+    numWaiting() {
         if (Meteor.userId()){
             let lobby = Lobbies.findOne({players:Meteor.userId()});
             if (lobby){
+                //play sound when the number of players changes
+                new Audio("round-sound.mp3").play();
                 return lobby.players.length
             }
         }
@@ -108,7 +123,7 @@ Template.lobby_page.helpers({
     },
     lobbyTimeout() {
         return LOBBY_TIMEOUT;
-    }
+    },
 
 });
 

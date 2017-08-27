@@ -112,6 +112,7 @@ Template.quiz.events({
         Session.setPersistent('page','exit');
         Meteor.call('users.updateUserInfo',{page:'exit'},'set');
         Meteor.call('users.updateUserInfo',{exitStatus:'failedQuiz'},'set');
+        Session.setPersistent('exitStatus','failedQuiz');
         FlowRouter.go('/exit');
     },
     'submit .previousInstruction'(event) {
