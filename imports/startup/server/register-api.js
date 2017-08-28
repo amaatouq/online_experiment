@@ -11,3 +11,5 @@ import '../../api/lobbies/server/publications.js';
 
 
 
+//registering survey
+import '../../api/surveys/methods.js';

@@ -60,6 +60,27 @@ Template.exit_page.helpers({
         if (!Meteor.userId()){
             return Session.get('username')
         }
+    },
+    alreadyAnswered(){
+        return Session.get('answeredExitSurvey')
+    }
+
+});
+
+Template.exit_page.events({
+    "submit #exit-survey": function(event) {
+        event.preventDefault();
+        const data = { userId: Session.get('username'),
+            age: event.target.age.value,
+            gender: event.target.gender.value,
+            education: event.target.education.value,
+            strategy: event.target.strategy.value,
+            pay: event.target.pay.value,
+            feedback: event.target.pay.value
+        };
+        Meteor.call('surveys.insertAnswers',data,()=>{
+            Session.setPersistent('answeredExitSurvey',true);
+        })
     }
 
 });

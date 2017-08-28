@@ -28,26 +28,71 @@
                 <p align="center">Your final <b>bonus</b> is {{score}} in addition of the
                     <b>{{baseReward}} base reward</b> for completing the HIT.</p>
             {{/if}}
-
             <hr>
         </div>
     </div>  
 
-    <!--body row 1-10-1-->
+    <!--body row 0-12-0-->
     <div class="row">
-        <!--left column -->
-        <div class="col-md-1">
-            <!--content of left column-->
-        </div>
-        <!--middle column-->
-        <div class="col-md-10">
-            Here the exit survey should go
-        </div>
+        <!--&lt;!&ndash;left column &ndash;&gt;-->
+        <!--<div class="col-md-1">-->
+            <!--&lt;!&ndash;content of left column&ndash;&gt;-->
+        <!--</div>-->
 
-        <!--right column -->
-        <div class="col-md-1">
-            <!--content of right column-->
-        </div>
+        <!--middle column-->
+    <div class="col-md-12" align="center">
+        {{#if alreadyAnswered}}
+            <br>
+            <h2>Thank you for submitting the optional survey</h2>
+        {{else}}
+            <p>Please answer the following short survey. You do not have to provide any information you feel uncomfortable with.</p>
+            <form class="form-inline exitSurvey" action="" method="post" id="exit-survey">
+                <div class="form-group">
+                    <label for="age">
+                        Age
+                    </label>
+                    <input class="form-control" id="age" name="age">
+                </div>
+                <div class="form-group">
+                    <label for="gender">
+                        Gender
+                    </label>
+                    <input class="form-control" type="text" id="gender" name="gender"/>
+                </div><div><br></div>
+                <div class="form-group" align="left">
+                    <label for="education">Highest educational qualification: </label>
+                    <input type="radio" id='education' name="education" value="highschool"> High School
+                    <input type="radio" id='education' name="education" value="bachelor"> US Bachelor's degree
+                    <input type="radio" id='education' name="education" value="master"> Master's or higher
+                    <input type="radio" id='education' name="education" value="other"> Other
+                </div>
+                <br><br>
+                <div class="form-group">
+                    <label for="bugs">How would you describe your strategy in the game?</label><br>
+                    <textarea id='strategy' rows="3" cols="45" class="form-control" name="strategy"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="pay">Do you feel the pay was fair?</label><br>
+                    <textarea id='pay' rows='3' cols="45" class="form-control" name="pay"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="feedback">
+                        Feedback, including problems you encountered.
+                    </label><br>
+                    <textarea id='feedback' rows="3" cols="45" class="form-control" name="feedback"></textarea><br>
+                </div>
+                <br> <br>
+                <div class="form-group">
+                    <button class="btn btn-primary next-button" type="submit">Submit HIT</button>
+                </div>
+            </form>
+        {{/if}}
+    </div>
+
+        <!--&lt;!&ndash;right column &ndash;&gt;-->
+        <!--<div class="col-md-1">-->
+            <!--&lt;!&ndash;content of right column&ndash;&gt;-->
+        <!--</div>-->
 
     </div>
 </template>
