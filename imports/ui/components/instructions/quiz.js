@@ -50,7 +50,9 @@ for (let q = 0; q < questions.length; q++){
 Template.quiz.helpers({
 	questions(){
 	    //return questions related to the condition only
-		return Questions.find();
+        if (Meteor.userId()){
+            return Questions.find({conditions:Meteor.user().condition});
+        }
 	},
 	quizAttempts(){
 		return Meteor.user().quizAttempts;
@@ -84,14 +86,14 @@ Template.quiz.events({
         let result;
 
         //check the questions that are related to the condition
-        Questions.find().forEach( (q)=> {
+        Questions.find({conditions:Meteor.user().condition}).forEach( (q)=> {
             if ($.inArray(playerData.condition, q.conditions) >= 0) {
                 let answer = $.trim(form[q._id].value.toLowerCase());
                 let correct = $.inArray(answer, q.answer) >= 0;
                 Questions.update({_id: q._id}, {$set: {correct: correct, answered: true}});
             }
         });
-        result = Questions.find({correct:true}).count() === Questions.find().count();
+        result = Questions.find({correct:true,conditions:Meteor.user().condition}).count() === Questions.find({conditions:Meteor.user().condition}).count();
 
         if(!result) {
             Meteor.call('users.updateUserInfo',{'quizAttempts':1},'inc');
