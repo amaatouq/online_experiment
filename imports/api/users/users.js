@@ -20,6 +20,7 @@ Accounts.onCreateUser((options, user) => {
         groupSize: (cond+'.GROUPS_SIZE').split('.').reduce((o, i) => o[i], CONDITIONS_SETTINGS),
         bonusConversion: (cond+'.BONUS_CONVERSION').split('.').reduce((o, i) => o[i], CONDITIONS_SETTINGS),
         N_ROUNDS: (cond+'.N_ROUNDS').split('.').reduce((o, i) => o[i], CONDITIONS_SETTINGS),
+        N_CONNECTIONS: (cond+'.N_CONNECTIONS').split('.').reduce((o, i) => o[i], CONDITIONS_SETTINGS),
     };
     return user;
 });

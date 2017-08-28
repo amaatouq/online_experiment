@@ -34,7 +34,7 @@ const questions = [
         conditions: ['control','T1','T2']
     },
     {
-        text: '5) Will get a chance to change your answer after you make your initial guess? (enter' +
+        text: '4) Will get a chance to change your answer after you make your initial guess? (enter' +
         ' \'yes\' or \'no\')',
         answer: ['yes','yes!',true,'true'],
         correct: false,

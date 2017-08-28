@@ -15,6 +15,7 @@ import '../../ui/pages/consent/consent_page.js'
 import '../../ui/pages/instructions/instructions_page.js'
 import '../../ui/pages/lobby/lobby_page.js'
 import '../../ui/pages/exit/exit_page.js'
+import '../../ui/pages/game/game_page.js'
 
 import '../../ui/pages/clear_page/clear_page';
 

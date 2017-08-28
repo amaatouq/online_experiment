@@ -1,0 +1,14 @@
+<template name="game_page">
+{{#if Template.subscriptionsReady}}
+        <h1>This is game {{game._id}} in condition {{game.condition}}</h1>
+    <p>I am player {{currentUser._id}}, my avatar is: {{currentUser.avatar}}  and I follow</p>
+    <ul>
+        {{#each currentNeighbors}}
+            <li>{{this}}</li>
+        {{/each}}
+    </ul>
+{{else}}
+    {{>loader}}
+{{/if}}
+
+</template>

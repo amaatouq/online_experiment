@@ -13,3 +13,7 @@ import '../../api/lobbies/server/publications.js';
 
 //registering survey
 import '../../api/surveys/methods.js';
+
+//registering games
+import '../../api/games/methods.js';
+import '../../api/games/server/publications.js';
