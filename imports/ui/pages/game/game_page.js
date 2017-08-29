@@ -55,7 +55,6 @@ Template.game_page.helpers({
     },
     currentNeighbors(){
         const currentRound = Games.findOne({players: Meteor.userId()}).currentRound;
-        console.log(Rounds.findOne({ userId: Meteor.userId(), round:currentRound}));
         return  Rounds.findOne({ userId: Meteor.userId(), round:currentRound}).neighbors;
     },
     avatar() {
@@ -72,21 +71,21 @@ Template.game_page.helpers({
 });
 
 
-//This is the round timeout function
-function roundTimedOut () {
+//This is the stage timeout function
+function stageTimedOut () {
     // do something when this is completed
-    console.log('Timeout for the round');
-    Session.setPersistent('roundTimeOutIsSet',false)
+    console.log('Timeout for the stage');
+    Session.setPersistent('stageTimeOutIsSet',false)
 }
 
 function startTimeOut () {
-    if (!Session.get('roundTimeOutIsSet')){
+    if (!Session.get('stageTimeOutIsSet')){
         countdown = new ReactiveCountdown(ROUND_TIMEOUT);
-        Session.setPersistent('roundTimeOutIsSet',true);
+        Session.setPersistent('stageTimeOutIsSet',true);
     } else {
         countdown = new ReactiveCountdown(Session.get('timeRemained')-1)
     }
     countdown.start(function () {
-        roundTimedOut()
+        stageTimedOut()
     })
 }

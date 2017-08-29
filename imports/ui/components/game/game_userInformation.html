@@ -11,7 +11,7 @@
         </div>
         <hr>
         <div id="timer" class="info">
-            <span id="counter">{{countDown}}</span>
+            <span class="counter {{#if Cond countDown '<' 10}} counter-low {{/if}}">{{countDown}}</span>
         </div>
     </div>
 </template>

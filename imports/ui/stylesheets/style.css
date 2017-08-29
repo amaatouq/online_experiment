@@ -502,7 +502,7 @@ ul.nav-wizard.nav-wizard-backnav .active ~ li a:focus {
   display: none;
 }
 
-/*userInfor in game including timer .. this is from Elines work on the python version*/
+/*userInfor in game including timer .. this is from Eline's work on the python version*/
 .box {
     width: 70%;
     text-align: center;
@@ -511,10 +511,14 @@ ul.nav-wizard.nav-wizard-backnav .active ~ li a:focus {
     border: 2px solid #000;
 }
 
-#counter {
+.counter {
     color: #006400;
-    font-size: 28px;
+    font-size: 35px;
     font-family: Orbitron, sans-serif;
+}
+
+.counter-low {
+    color: #a90002;
 }
 
 .info {
