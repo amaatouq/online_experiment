@@ -1,0 +1,17 @@
+<template name="game_userInformation">
+    <div align="center">
+        <div>
+            <h4 align =center style="white-space: nowrap;"><b>You are:</b></h4>
+            <img src='{{ currentUser.avatar }}' class="avatar-large user-avatar-large" />
+        </div>
+        <br>
+        <div class="info">
+            Total score: <br><span class="user_score">{{ currentUser.score }}</span>
+            <img id="coin" src="img/coin.png" />
+        </div>
+        <hr>
+        <div id="timer" class="info">
+            <span id="counter">{{countDown}}</span>
+        </div>
+    </div>
+</template>

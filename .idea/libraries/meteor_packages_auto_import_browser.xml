@@ -129,6 +129,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/integration/fixtures/hooks/multiple.hook.async.error.js" />
         <item url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/integration/fixtures/hooks/before.hook.async.error.tip.js" />
         <item url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/integration/fixtures/hooks/after.hook.async.error.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/flyandi_reactive-countdown/0.0.3/web.browser/packages/flyandi_reactive-countdown.js" />
         <item url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/integration/fixtures/hooks/multiple.hook.error.js" />
         <item url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/integration/fixtures/hooks/before.hook.async.error.js" />
         <item url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/integration/fixtures/hooks/before.hook.error.tip.js" />
@@ -643,6 +644,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/integration/fixtures/hooks/multiple.hook.async.error.js" />
       <root url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/integration/fixtures/hooks/before.hook.async.error.tip.js" />
       <root url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/integration/fixtures/hooks/after.hook.async.error.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/flyandi_reactive-countdown/0.0.3/web.browser/packages/flyandi_reactive-countdown.js" />
       <root url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/integration/fixtures/hooks/multiple.hook.error.js" />
       <root url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/integration/fixtures/hooks/before.hook.async.error.js" />
       <root url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/integration/fixtures/hooks/before.hook.error.tip.js" />

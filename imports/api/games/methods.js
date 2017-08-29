@@ -29,7 +29,7 @@ Meteor.methods({
 
             //get random neighbors but excluding the current player
             //This can be changed into a function that returns a specific network
-            const neighbors = getNeighbors(player,players);
+            const neighbors = getNeighbors(player,players,maxInDegree);
             //add the round data
             Rounds.insert({
                 gameId: lobby._id,
@@ -48,11 +48,8 @@ Meteor.methods({
 });
 
 //this function can be changed to anything
-function getNeighbors(player,players) {
-    let neighbors = new Set([]);
-    for (let j = 0; j===neighbors.size; j++){
-        neighbors.add(Random.choice(removeElement(players,player)));
-    }
+function getNeighbors(player,players,maxInDegree) {
+    const neighbors = new Set(_.sample(removeElement(players,player),maxInDegree));
     return Array.from(neighbors);
 }
 

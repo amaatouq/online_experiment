@@ -1,14 +1,43 @@
 <template name="game_page">
-{{#if Template.subscriptionsReady}}
-        <h1>This is game {{game._id}} in condition {{game.condition}}</h1>
-    <p>I am player {{currentUser._id}}, my avatar is: {{currentUser.avatar}}  and I follow</p>
-    <ul>
-        {{#each currentNeighbors}}
-            <li>{{this}}</li>
-        {{/each}}
-    </ul>
-{{else}}
-    {{>loader}}
-{{/if}}
+    {{#if Template.subscriptionsReady}}
+    <div class = "container-fluid" id = "main">
+        <!--title row 12-0-0 -->
+        <div class="row">
+                {{> game_progress stage=stage currentRound=game.currentRound}}
+        </div>
+
+        <!--body row 2-8-2-->
+        <div class="row">
+
+            <!--left column -->
+            <div class="col-md-2">
+                <!--content of left column-->
+                {{> game_userInformation countDown=countDown avatar=currentUser.avatar}}
+            </div>
+
+
+            <!--middle column-->
+            <div class="col-md-6">
+                here goes the task, probably two rows, one for the slider and one for the task this is
+                the biggest of them all
+            </div>
+
+
+            <!--right column -->
+            <div class="col-md-4">
+                <!--content of right column-->
+                here goes two columns, one for the players you follow and one for people you could follow
+            </div>
+
+
+        </div>
+
+
+    </div>
+    {{else}}
+        {{>loader}}
+    {{/if}}
 
 </template>
+
+

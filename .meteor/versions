@@ -37,6 +37,7 @@ ejson@1.0.13
 email@1.2.3
 es5-shim@4.6.15
 fastclick@1.0.13
+flyandi:reactive-countdown@0.0.3
 froatsnook:sleep@1.2.0
 geojson-utils@1.0.10
 ground:db@0.3.15

@@ -1,0 +1,10 @@
+<template name="game_progress">
+        <div align="center">
+            <ul class="nav nav-wizard">
+                <li>Round: {{currentRound}}</li>
+                <li class = '{{isActive stage.initial}}'><a>Initial Guess</a></li>
+                <li class = '{{isActive stage.interactive}}'><a>Interactive Guess</a></li>
+                <li class = '{{isActive stage.outcome}}'><a>Round Outcome</a></li>
+            </ul>
+        </div>
+</template>
