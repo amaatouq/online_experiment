@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { Games, Networks, Rounds } from "./games";
+import { Games, getNeighbors, Rounds } from "./games";
 import { Random } from 'meteor/random'
 
 Meteor.methods({
@@ -9,6 +9,7 @@ Meteor.methods({
         const players = lobby.players;
         const icons = _.shuffle(AVATARS);
         const maxInDegree = (condition+'.N_CONNECTIONS').split('.').reduce((o, i) => o[i],CONDITIONS_SETTINGS);
+        const totalRounds = (condition+'.N_ROUNDS').split('.').reduce((o, i) => o[i],CONDITIONS_SETTINGS);
 
         Games.insert({
             _id: lobby._id,
@@ -19,6 +20,7 @@ Meteor.methods({
             players: players,
             stage: 'initial',
             currentRound: 1,
+            totalRounds: totalRounds
         });
 
         //batch update will be a more efficient way of doing this
@@ -40,17 +42,26 @@ Meteor.methods({
                 neighbors:neighbors,
                 initialAnswer: null,
                 updatedAnswer:null,
+                ready:false,
             });
 
         })
     },
 
+    //General purpose document modification function for the round data
+    'games.updateRoundInfo'(currentRound,data,operation) {
+        if (operation === 'set') {
+            Rounds.update({userId : this.userId, round:currentRound}, {$set: data});
+        } else if (operation === 'inc') {
+            Rounds.update({userId : this.userId,round:currentRound}, {$inc: data});
+        } else if (operation === 'dec') {
+            Rounds.update({userId : this.userId,round:currentRound}, {$dec: data});
+        }
+    }
+
 });
 
-//this function can be changed to anything
-function getNeighbors(player,players,maxInDegree) {
-    const neighbors = new Set(_.sample(removeElement(players,player),maxInDegree));
-    return Array.from(neighbors);
-}
+
+
 
 

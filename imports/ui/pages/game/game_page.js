@@ -15,7 +15,6 @@ let countdown = null;
 
 Template.game_page.onCreated(function() {
     startTimeOut();
-
     Session.setPersistent('page','game');
     const gameStage = Session.get('gameStage');
     if (!gameStage){
@@ -73,9 +72,14 @@ Template.game_page.helpers({
 
 //This is the stage timeout function
 function stageTimedOut () {
-    // do something when this is completed
+    // do something when it timesout
+    const currentRound=Games.findOne({players: Meteor.userId()}).currentRound;
     console.log('Timeout for the stage');
-    Session.setPersistent('stageTimeOutIsSet',false)
+    Session.setPersistent('stageTimeOutIsSet',null);
+    Session.setPersistent('timeRemained',null);
+    Meteor.call('games.updateRoundInfo',currentRound,{ready:true},'set',()=>{
+        startTimeOut();
+    });
 }
 
 function startTimeOut () {
