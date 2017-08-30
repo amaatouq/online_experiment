@@ -6,36 +6,18 @@
                 {{> game_progress stage=stage currentRound=game.currentRound}}
         </div>
 
-        <!--body row 2-8-2-->
-        <div class="row">
+        {{#if stage.initial}}
+            {{>game_initial_page}}
+        {{/if}}
 
-            <!--left column -->
-            <div class="col-md-2">
-                <!--content of left column-->
-                {{> game_userInformation countDown=countDown avatar=currentUser.avatar}}
-            </div>
+        {{#if stage.interactive}}
+            {{>game_initial_page}}
+        {{/if}}
 
+        {{#if stage.roundOutcome}}
+            {{>game_initial_page}}
+        {{/if}}
 
-            <ul>
-                {{#each currentNeighbors}}
-                    <li>{{this}}</li>
-                {{/each}}
-            </ul>
-            <!--middle column-->
-            <div class="col-md-6">
-                here goes the task, probably two rows, one for the slider and one for the task this is
-                the biggest of them all
-            </div>
-
-
-            <!--right column -->
-            <div class="col-md-4">
-                <!--content of right column-->
-                here goes two columns, one for the players you follow and one for people you could follow
-            </div>
-
-
-        </div>
 
 
     </div>

@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor'
-import {Rounds, Games} from "../games";
+import { Games} from "../games";
+import { Rounds } from '../rounds.js'
 
 
 

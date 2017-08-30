@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
-import { Games, getNeighbors, Rounds } from "./games";
+import { Games} from "./games";
+import {getNeighbors, Rounds } from './rounds'
 import { Random } from 'meteor/random'
 
 Meteor.methods({

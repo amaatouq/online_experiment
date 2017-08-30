@@ -1,11 +1,13 @@
 import '../loader/loader';
 import './game_page.html'
+import './game_initial_page'
 
 import '../../components/game/game_progress.js';
 import '../../components/game/game_userInformation';
 
 
-import { Rounds, Games } from '../../../api/games/games';
+import { Games } from '../../../api/games/games';
+import { Rounds } from '../../../api/games/rounds';
 import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
 import { FlowRouter } from 'meteor/kadira:flow-router';
@@ -15,25 +17,6 @@ let countdown = new ReactiveVar(null);
 let currentRoundId = new ReactiveVar(null);
 
 Template.game_page.onCreated(function() {
-    Session.setPersistent('rerunTimer',true);
-
-    //setting up the round timer
-    Tracker.autorun(()=>{
-        if (Session.get('rerunTimer')) {
-            if (Session.get('timeRemained')) {
-                //on refresh give them the same time
-                countdown.set(new ReactiveCountdown(Session.get('timeRemained') - 1));
-            } else {
-                //if the first time it is run, then give the full time
-                countdown.set(new ReactiveCountdown(ROUND_TIMEOUT));
-            }
-            //start the timer count down
-            countdown.get().start(function () {
-                stageTimedOut()
-            });
-            Session.setPersistent('rerunTimer',false);
-        }
-    });
 
     //setup the regular pge stuff
     Session.setPersistent('page','game');
@@ -89,26 +72,9 @@ Template.game_page.helpers({
     },
     avatar() {
         return Meteor.user().avatar;
-    },
-    countDown() {
-        const timeRemained = countdown.get().get();
-        Session.setPersistent('timeRemained',timeRemained);
-        return timeRemained
-
-    },
+    }
 
 
 });
 
 
-//This is the stage timeout function
-function stageTimedOut () {
-    // do something when it timesout
-    currentRoundId.set(Games.findOne({players: Meteor.userId()}).currentRound);
-    Meteor.call('games.updateRoundInfo',currentRoundId.get(),{ready:true},'set',()=>{
-        console.log('now I should turn rerun to True');
-        Session.setPersistent('rerunTimer',true);
-        Session.setPersistent('timeRemained',null);
-        countdown.set(null);
-    });
-}
