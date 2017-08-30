@@ -9,24 +9,51 @@ import { Rounds, Games } from '../../../api/games/games';
 import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import { ReactiveVar } from 'meteor/reactive-var'
 
-
-let countdown = null;
+let countdown = new ReactiveVar(null);
+let currentRoundId = new ReactiveVar(null);
 
 Template.game_page.onCreated(function() {
-    startTimeOut();
+    Session.setPersistent('rerunTimer',true);
+
+    //setting up the round timer
+    Tracker.autorun(()=>{
+        if (Session.get('rerunTimer')) {
+            if (Session.get('timeRemained')) {
+                //on refresh give them the same time
+                countdown.set(new ReactiveCountdown(Session.get('timeRemained') - 1));
+            } else {
+                //if the first time it is run, then give the full time
+                countdown.set(new ReactiveCountdown(ROUND_TIMEOUT));
+            }
+            //start the timer count down
+            countdown.get().start(function () {
+                stageTimedOut()
+            });
+            Session.setPersistent('rerunTimer',false);
+        }
+    });
+
+    //setup the regular pge stuff
     Session.setPersistent('page','game');
     const gameStage = Session.get('gameStage');
     if (!gameStage){
         Session.setPersistent('gameStage','initial');
     }
-    this.subscribe('games.userGame',(err,res)=>{
-        if (err){
-            console.log('error while trying to subscribe to the game')
-        } else{
-            this.subscribe('games.userRound',Games.findOne({players: Meteor.userId()}).currentRound);
-        }
+
+    //resubscribe everytime the currentRoundId changes
+    this.autorun(()=>{
+        this.subscribe('games.userGame',()=>{
+            currentRoundId.set(Games.findOne({players: Meteor.userId()}).currentRound);
+        });
     });
+
+    this.autorun(()=>{
+        this.subscribe('games.userRound',currentRoundId.get());
+    })
+
+
 });
 
 
@@ -53,14 +80,18 @@ Template.game_page.helpers({
         return Games.findOne({players: Meteor.userId()});
     },
     currentNeighbors(){
-        const currentRound = Games.findOne({players: Meteor.userId()}).currentRound;
-        return  Rounds.findOne({ userId: Meteor.userId(), round:currentRound}).neighbors;
+        const currentRoundData = Rounds.findOne({ userId: Meteor.userId(), round:currentRoundId.get()});
+        console.log('currentuser',currentRoundData);
+        if (currentRoundData){
+            return currentRoundData.neighbors
+        }
+
     },
     avatar() {
         return Meteor.user().avatar;
     },
     countDown() {
-        const timeRemained = countdown.get();
+        const timeRemained = countdown.get().get();
         Session.setPersistent('timeRemained',timeRemained);
         return timeRemained
 
@@ -73,23 +104,11 @@ Template.game_page.helpers({
 //This is the stage timeout function
 function stageTimedOut () {
     // do something when it timesout
-    const currentRound=Games.findOne({players: Meteor.userId()}).currentRound;
-    console.log('Timeout for the stage');
-    Session.setPersistent('stageTimeOutIsSet',null);
-    Session.setPersistent('timeRemained',null);
-    Meteor.call('games.updateRoundInfo',currentRound,{ready:true},'set',()=>{
-        startTimeOut();
+    currentRoundId.set(Games.findOne({players: Meteor.userId()}).currentRound);
+    Meteor.call('games.updateRoundInfo',currentRoundId.get(),{ready:true},'set',()=>{
+        console.log('now I should turn rerun to True');
+        Session.setPersistent('rerunTimer',true);
+        Session.setPersistent('timeRemained',null);
+        countdown.set(null);
     });
-}
-
-function startTimeOut () {
-    if (!Session.get('stageTimeOutIsSet')){
-        countdown = new ReactiveCountdown(ROUND_TIMEOUT);
-        Session.setPersistent('stageTimeOutIsSet',true);
-    } else {
-        countdown = new ReactiveCountdown(Session.get('timeRemained')-1)
-    }
-    countdown.start(function () {
-        stageTimedOut()
-    })
 }

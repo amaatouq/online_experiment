@@ -45,6 +45,7 @@ Meteor.users.find({ "status.online": true }).observe({
             Lobbies.update({_id:user.lobbyId},{$pull: {players:user._id}});
         }
         else if (user.page==='game'){
+            console.log('user left the game')
             //todo what happens to users when they leave the game
         }
     }
