@@ -37,7 +37,7 @@ Rounds.after.update((userId, round, fieldNames, modifier, options)=>{
                 let roundNewValues = {};
                 roundNewValues[nextStage+'.startTime'] = new Date();
                 roundNewValues['stage'] = nextStage;
-                Rounds.update({gameId:game._id,round:game.currentRound}, {$set: roundNewValues})
+                Rounds.update({gameId:game._id,round:game.currentRound}, {$set: roundNewValues},{multi:true});
             } else {
                 //add a new rounds
             }

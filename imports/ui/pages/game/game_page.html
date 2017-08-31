@@ -11,7 +11,11 @@
         {{/if}}
 
         {{#if stage.interactive}}
-            {{>game_interactive_page neighbors=neighbors}}
+            {{>game_interactive_page InteractiveNeighbors=InteractiveNeighbors}}
+        {{/if}}
+
+        {{#if stage.roundOutcome}}
+            {{>game_roundOutcome_page}}
         {{/if}}
 
 

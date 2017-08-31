@@ -9,16 +9,13 @@ import {ReactiveVar} from 'meteor/reactive-var'
 
 Template.game_timer.onCreated(function() {
     let game = Games.findOne({players:Meteor.userId()});
-
+    let userRound = Rounds.findOne({ userId: Meteor.userId(), round:game.currentRound});
     this.autorun(()=>{
+        console.log('reran the clock');
         if (game){
-            let userRound = Rounds.findOne({ userId: Meteor.userId(), round:game.currentRound});
             if (userRound){
                 const startedTime = accessNestedObject(game.stage + '.startTime',userRound);
-                //if there is no timer, start a new one
-                if (!Session.get('RoundTimer')) {
-                    Session.setPersistent('RoundTimer', startedTime);
-                }
+                Session.setPersistent('RoundTimer', startedTime);
             }
         }
     });

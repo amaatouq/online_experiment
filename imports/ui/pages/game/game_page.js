@@ -61,12 +61,16 @@ Template.game_page.helpers({
     avatar() {
         return Meteor.user().avatar;
     },
-    neighbors(){
+    InteractiveNeighbors(){
         //todo here you should get the rounds of the neigbhor which is a new subscription
         //rather than just giving their names
         const game = Games.findOne({players:Meteor.userId()});
-        const userRound = Rounds.findOne({userId:Meteor.userId(),round:game.currentRound})
+        const userRound = Rounds.findOne({userId:Meteor.userId(),round:game.currentRound});
         return userRound.neighbors;
+    },
+    allPlayers(){
+        //todo here you should get the users of the game rather than only their name list
+        return  Games.findOne({players:Meteor.userId()}).players
     }
 
 
