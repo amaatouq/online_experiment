@@ -1,6 +1,8 @@
 import '../loader/loader';
 import './game_page.html'
-import './game_initial_page'
+import './stages/game_initial_page'
+import './stages/game_interactive_page.js'
+import './stages/game_roundOutcome_page'
 
 import '../../components/game/game_progress.js';
 import '../../components/game/game_userInformation';
@@ -11,31 +13,27 @@ import { Rounds } from '../../../api/games/rounds';
 import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import { ReactiveVar } from 'meteor/reactive-var'
 
-let countdown = new ReactiveVar(null);
-let currentRoundId = new ReactiveVar(null);
 
 Template.game_page.onCreated(function() {
 
     //setup the regular pge stuff
     Session.setPersistent('page','game');
-    const gameStage = Session.get('gameStage');
-    if (!gameStage){
-        Session.setPersistent('gameStage','initial');
+    if (Meteor.user()){
+        if (Meteor.user().page!=='game'){
+            Meteor.call('users.updateUserInfo',{page:'game'},'set');
+        }
     }
 
-    //resubscribe everytime the currentRoundId changes
+    //subscribe to the game once
+    this.subscribe('games.userGame');
     this.autorun(()=>{
-        this.subscribe('games.userGame',()=>{
-            currentRoundId.set(Games.findOne({players: Meteor.userId()}).currentRound);
-        });
-    });
-
-    this.autorun(()=>{
-        this.subscribe('games.userRound',currentRoundId.get());
+        const game = Games.findOne({players:Meteor.userId()});
+        if (game){
+            console.log('subscribed to round');
+            this.subscribe('games.userRound', game.currentRound);
+        }
     })
-
 
 });
 
@@ -59,22 +57,22 @@ Template.game_page.helpers({
         }
         return {initial:initial,interactive:interactive,roundOutcome:roundOutcome}
     },
-    game() {
-        return Games.findOne({players: Meteor.userId()});
-    },
-    currentNeighbors(){
-        const currentRoundData = Rounds.findOne({ userId: Meteor.userId(), round:currentRoundId.get()});
-        console.log('currentuser',currentRoundData);
-        if (currentRoundData){
-            return currentRoundData.neighbors
-        }
 
-    },
     avatar() {
         return Meteor.user().avatar;
+    },
+    neighbors(){
+        //todo here you should get the rounds of the neigbhor which is a new subscription
+        //rather than just giving their names
+        const game = Games.findOne({players:Meteor.userId()});
+        const userRound = Rounds.findOne({userId:Meteor.userId(),round:game.currentRound})
+        return userRound.neighbors;
     }
 
 
 });
+
+
+
 
 

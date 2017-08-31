@@ -1,46 +1,46 @@
 import './game_timer.html'
 import {Meteor} from 'meteor/meteor'
 import {Session} from 'meteor/session'
-import {Games} from '../../../api/games/games'
+import {Rounds} from '../../../api/games/rounds';
+import {Games} from "../../../api/games/games";
+import {ReactiveVar} from 'meteor/reactive-var'
 
-let countdown = null;
+
 
 Template.game_timer.onCreated(function() {
+    let game = Games.findOne({players:Meteor.userId()});
 
-    //setting up the round timer
-    if (Session.get('timeRemained')) {
-        //on refresh give them the same time
-        countdown = new ReactiveCountdown(Session.get('timeRemained') - 1);
-    } else {
-        //if the first time it is run, then give the full time
-        countdown =new ReactiveCountdown(ROUND_TIMEOUT);
-    }
-    //start the timer count down
-    countdown.start(function () {
-        //what to do when the timeout finishes
-        stageTimedOut()
+    this.autorun(()=>{
+        if (game){
+            let userRound = Rounds.findOne({ userId: Meteor.userId(), round:game.currentRound});
+            if (userRound){
+                const startedTime = accessNestedObject(game.stage + '.startTime',userRound);
+                //if there is no timer, start a new one
+                if (!Session.get('RoundTimer')) {
+                    Session.setPersistent('RoundTimer', startedTime);
+                }
+            }
+        }
     });
+
+
 
 });
 
 Template.game_timer.helpers({
-    countDown() {
-        const timeRemained = countdown.get();
-        Session.setPersistent('timeRemained',timeRemained);
-        return timeRemained
-
+    countDown(){
+        if (Session.get('RoundTimer')){
+            const sTime = Session.get('RoundTimer');
+            const elapsed = (TimeSync.serverTime()-sTime)/1000;
+            let s = Math.floor(elapsed % 60);
+            s = s < 10 ? "0" + s: s;
+            Session.setPersistent('sec',Number(s));
+            return ROUND_TIMEOUT - s;
+        }
     },
+
 });
 
 
 
 
-//This is the stage timeout function
-function stageTimedOut () {
-    // do something when it
-    const currentRoundId = (Games.findOne({players: Meteor.userId()}).currentRound);
-    Meteor.call('games.updateRoundInfo',currentRoundId,{ready:true},'set',()=>{
-        console.log('now I should turn rerun to True');
-        Session.setPersistent('timeRemained',null);
-    });
-}

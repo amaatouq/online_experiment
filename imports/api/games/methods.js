@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Games} from "./games";
-import {getNeighbors, Rounds } from './rounds'
+import {getNeighbors, insertUserRound, Rounds } from './rounds'
 import { Random } from 'meteor/random'
 
 Meteor.methods({
@@ -28,35 +28,31 @@ Meteor.methods({
         players.forEach(function (player,i) {
             //update player information to be:
             // 1) assigned a random avatar; 2) to this gameId; 3) and the page to be 'game'
-            Meteor.users.update({_id:player},{$set:{gameId:lobby._id, page:'game', avatar:icons[i]}});
+            Meteor.users.update({_id:player},{$set:
+                {
+                    gameId:lobby._id, page:'game', avatar:icons[i],
+                }
+            });
 
             //get random neighbors but excluding the current player
             //This can be changed into a function that returns a specific network
             const neighbors = getNeighbors(player,players,maxInDegree);
             //add the round data
-            Rounds.insert({
-                gameId: lobby._id,
-                userId: player,
-                round: 1,
-                cumulativeScore: 0,
-                incrementScore: 0,
-                neighbors:neighbors,
-                initialAnswer: null,
-                updatedAnswer:null,
-                ready:false,
-            });
+            insertUserRound(lobby._id,player,1,neighbors)
 
         })
     },
 
     //General purpose document modification function for the round data
-    'games.updateRoundInfo'(currentRound,data,operation) {
+    'games.updateRoundInfo'(data,operation) {
+        console.log('I will update ',this.userId, ' with ',data);
+        const game = Games.findOne({players:this.userId});
         if (operation === 'set') {
-            Rounds.update({userId : this.userId, round:currentRound}, {$set: data});
+            Rounds.update({userId : this.userId, round:game.currentRound}, {$set: data});
         } else if (operation === 'inc') {
-            Rounds.update({userId : this.userId,round:currentRound}, {$inc: data});
+            Rounds.update({userId : this.userId,round:game.currentRound}, {$inc: data});
         } else if (operation === 'dec') {
-            Rounds.update({userId : this.userId,round:currentRound}, {$dec: data});
+            Rounds.update({userId : this.userId,round:game.currentRound}, {$dec: data});
         }
     }
 

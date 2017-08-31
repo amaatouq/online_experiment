@@ -529,3 +529,7 @@ ul.nav-wizard.nav-wizard-backnav .active ~ li a:focus {
 #coin {
     height: 20px;
 }
+
+.img-task {
+  width:70%
+}

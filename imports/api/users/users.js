@@ -16,6 +16,7 @@ Accounts.onCreateUser((options, user) => {
     user.lobbyTimeout= LOBBY_TIMEOUT;
     user.lobbyId= null;
     user.gameId=null;
+    user.currentRound=null;
     user.condInfo = {name: cond,
         groupSize: (cond+'.GROUPS_SIZE').split('.').reduce((o, i) => o[i], CONDITIONS_SETTINGS),
         bonusConversion: (cond+'.BONUS_CONVERSION').split('.').reduce((o, i) => o[i], CONDITIONS_SETTINGS),

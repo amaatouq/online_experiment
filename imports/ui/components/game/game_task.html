@@ -1,0 +1,24 @@
+<template name="game_task">
+    <!--the task-->
+    <div class = "row" align="center">
+            <img src='/task/taskPlaceHolder.png' class="img-task"/>
+
+    <!--the input mechanism-->
+        <div class = "col-xs-1 col-xs-offset-3">
+            <p class = "contributionText">0<br>points</p>
+        </div>
+        <div class = "col-xs-5">
+            <form oninput = "rangeOutput.value = rangeInput.value">
+                <input type="range" id="contributionSlider" value="{{limit}}" min="0" max="100" name = "rangeInput">
+                <br>
+                <output class = "contributionText" name = "rangeOutput" for="rangeInput"><span class = "contributionText">{{limit}}</span></output>
+            </form>
+        </div>
+        <div class = "col-xs-1">
+            <p class = "contributionText">100<br>points</p>
+        </div>
+        <div class = "col-xs-offset-1">
+            <button type="button" class="btn btn-primary btn-lg" id = "contributionSubmit" aria-label="Left Align" style="margin-left:auto; margin-right:auto; display:block">Submit</button>
+        </div>
+    </div>
+</template>
