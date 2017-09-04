@@ -17,8 +17,9 @@ export const Rounds = new Mongo.Collection('rounds');
 Rounds.after.update((userId, round, fieldNames, modifier, options)=>{
     console.log('fieldNames',fieldNames,'modf ',modifier,' options ',options);
     const stages = ['initial','interactive','roundOutcome'];
-    //make sure we modified the stage ready
-    if (stages.includes(fieldNames[0]) && fieldNames.length === 1){
+    //make sure we modified the stage ready and submitted an answer for that stage or it is roundoutcome
+    if ((stages.includes(fieldNames[0]) && fieldNames[0]+'Answer' === fieldNames[1])
+        || fieldNames[0] == 'roundOutcome') {
         const currentStage = fieldNames[0];
         const nextStage = nextStageName(currentStage);
         const game = Games.findOne({_id:round.gameId});
@@ -65,7 +66,6 @@ export function getNeighbors(player,players,maxInDegree) {
     return Array.from(neighbors);
 }
 
-//todo CreateTime and StartTime should be updated so everyone has the same one
 export function insertUserRound(gameId,player,currentRound,neighbors,taskId) {
     Meteor.users.update({_id:player},{$set:{currentRound:currentRound}});
     Rounds.insert({
@@ -80,7 +80,7 @@ export function insertUserRound(gameId,player,currentRound,neighbors,taskId) {
         incrementScore: 0,
         neighbors:neighbors,
         initialAnswer: null,
-        updatedAnswer:null,
+        interactiveAnswer:null,
         ready:false,
         createTime: new Date(),
         taskId: taskId,
