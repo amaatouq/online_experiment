@@ -72,9 +72,9 @@ span.incorrect{
 }
 
 /* Contribution phase */
-#contributionSliderRow{
-  margin-top: 10%;
-}
+/*#contributionSliderRow{*/
+  /*margin-top: 10%;*/
+/*}*/
 #contributionSubmit{
   margin-left: auto;
   margin-right: auto;
@@ -83,6 +83,12 @@ span.incorrect{
 }
 .contributionText{
   font-size: 20px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.sliderText{
+  font-size: 15px;
   font-weight: bolder;
   text-align: center;
 }
@@ -531,5 +537,91 @@ ul.nav-wizard.nav-wizard-backnav .active ~ li a:focus {
 }
 
 .img-task {
-  width:70%
+  width:80%
+}
+
+.faded {
+  opacity: 0.2;
+  filter: alpha(opacity=20); /* For IE8 and earlier */
+}
+
+/*slider stuff*/
+#min {
+    float: left;
+}
+
+.firstQuarter {
+    margin-left: 21%;
+}
+
+.secondQuarter {
+    margin-left: 19%;
+}
+
+.thirdQuarter {
+    margin-left: 19%;
+}
+
+#max {
+    float: right;
+    align-content: right;
+}
+/*slider stuff from http://www.lugolabs.com/flat-slider*/
+.flat-slider.ui-corner-all,
+.flat-slider .ui-corner-all {
+    border-radius: 0;
+}
+
+.flat-slider.ui-slider {
+    border: 0;
+    background: #ededed;
+    border-radius: 1px;
+}
+
+.flat-slider.ui-slider-horizontal {
+    height: 9px;
+}
+
+.flat-slider.ui-slider-vertical {
+    height: 15em;
+    width: 9px;
+}
+
+.flat-slider .ui-slider-handle {
+    width: 24px;
+    height: 24px;
+    background: #888888;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.flat-slider.ui-slider-horizontal .ui-slider-handle {
+    top: 50%;
+    margin-top: -12px;
+}
+
+.flat-slider.ui-slider-vertical .ui-slider-handle {
+    left: 50%;
+    margin-left: -12px;
+}
+
+.flat-slider .ui-slider-handle:hover {
+    opacity: .8;
+}
+
+.flat-slider .ui-slider-range {
+    border: 0;
+    border-radius: 1;
+    background: #aca6a6;
+}
+
+.flat-slider.ui-slider-horizontal .ui-slider-range {
+    top: 0;
+    height: 9px;
+}
+
+.flat-slider.ui-slider-vertical .ui-slider-range {
+    left: 0;
+    width: 9px;
 }

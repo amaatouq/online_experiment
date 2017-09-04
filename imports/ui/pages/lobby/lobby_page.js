@@ -66,7 +66,9 @@ Template.lobby_page.onCreated(function() {
         if (lobby){
             if (lobby.lobbyStatus === 'full'){
                 new Audio("bell.mp3").play();
-                FlowRouter.go('/game');
+                Meteor.setTimeout(()=>{
+                    FlowRouter.go('/game')
+                },500);
             }
         }
 
@@ -84,11 +86,12 @@ Template.lobby_page.helpers({
     },
 
     numWaiting() {
+        const sound = new Audio("round-sound.mp3");
         if (Meteor.userId()){
             let lobby = Lobbies.findOne({players:Meteor.userId()});
             if (lobby){
                 //play sound when the number of players changes
-                new Audio("round-sound.mp3").play();
+                sound.play();
                 return lobby.players.length
             }
         }

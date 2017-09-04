@@ -40,3 +40,6 @@ matb33:collection-hooks
 flyandi:reactive-countdown
 mizzao:timesync
 check
+rcy:nouislider
+jquery
+mizzao:jquery-ui

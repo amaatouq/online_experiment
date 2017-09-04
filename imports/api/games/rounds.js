@@ -39,7 +39,19 @@ Rounds.after.update((userId, round, fieldNames, modifier, options)=>{
                 roundNewValues['stage'] = nextStage;
                 Rounds.update({gameId:game._id,round:game.currentRound}, {$set: roundNewValues},{multi:true});
             } else {
-                //add a new rounds
+                //move to the next round and update the stage creation time
+                //update the networks for the players for the next round?? (we will see about this)
+                if (game.currentRound === game.totalRounds){
+                    console.log('end the game');
+                    Games.update({_id:game._id},{$set:{status:'finished'}})
+                } else {
+                    console.log('everyone is ready in stage ', currentStage, ' will move to round ', game.currentRound+1);
+                    Games.update({_id:game._id},{$set:{currentRound:game.currentRound+1,stage:'initial'}});
+                    Rounds.update({gameId:game._id,round:game.currentRound+1},
+                        {$set: {'initial.startTime':new Date()}},
+                        {multi:true});
+                }
+
             }
         }
     }
@@ -53,14 +65,15 @@ export function getNeighbors(player,players,maxInDegree) {
     return Array.from(neighbors);
 }
 
-export function insertUserRound(gameId,player,currentRound,neighbors) {
-    Meteor.users.update({_id:this.userId},{$set:{currentRound:currentRound}});
+//todo CreateTime and StartTime should be updated so everyone has the same one
+export function insertUserRound(gameId,player,currentRound,neighbors,taskId) {
+    Meteor.users.update({_id:player},{$set:{currentRound:currentRound}});
     Rounds.insert({
         gameId: gameId,
         userId: player,
         round: currentRound,
         stage:'initial',
-        initial: {ready:false,isCurrentStage:true,startTime:new Date()},
+        initial: {ready:false,isCurrentStage:true,startTime:null},
         interactive:{ready:false,isCurrentStage:false, startTime:null},
         roundOutcome:{ready:false,isCurrentStage:false, startTime:null},
         cumulativeScore: 0,
@@ -69,7 +82,9 @@ export function insertUserRound(gameId,player,currentRound,neighbors) {
         initialAnswer: null,
         updatedAnswer:null,
         ready:false,
-        createTime: new Date()
+        createTime: new Date(),
+        taskId: taskId,
+        //add the difficulty, task path this will be queried from the Tasks collection
     });
 
 }

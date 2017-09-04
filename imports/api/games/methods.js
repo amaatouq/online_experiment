@@ -11,6 +11,8 @@ Meteor.methods({
         const icons = _.shuffle(AVATARS);
         const maxInDegree = (condition+'.N_CONNECTIONS').split('.').reduce((o, i) => o[i],CONDITIONS_SETTINGS);
         const totalRounds = (condition+'.N_ROUNDS').split('.').reduce((o, i) => o[i],CONDITIONS_SETTINGS);
+        //the stimuli should be randomized at the game level
+        const tasks = _.shuffle(TASKS);
 
         Games.insert({
             _id: lobby._id,
@@ -21,7 +23,8 @@ Meteor.methods({
             players: players,
             stage: 'initial',
             currentRound: 1,
-            totalRounds: totalRounds
+            totalRounds: totalRounds,
+            status: 'onGoing'
         });
 
         //batch update will be a more efficient way of doing this
@@ -34,13 +37,29 @@ Meteor.methods({
                 }
             });
 
-            //get random neighbors but excluding the current player
-            //This can be changed into a function that returns a specific network
-            const neighbors = getNeighbors(player,players,maxInDegree);
-            //add the round data
-            insertUserRound(lobby._id,player,1,neighbors)
+            //we will add all the rounds for this game at the beginning. This will help to randomize
+            //the stimuli using ._shuffle the sequence for each game
+            console.log('will add the rounds information');
+            for (let roundId = 1; roundId <= totalRounds; roundId++){
+                //get random neighbors but excluding the current player
+                //This can be changed into a function that returns a specific network
+                //only do this for the first initial network, rest will be dynamic (will change every round)
+                let neighbors = null;
+                if (roundId===1){
+                    neighbors = getNeighbors(player,players,maxInDegree);
+                } else {
+                    neighbors = [];
+                }
+                //add round data
+                insertUserRound(lobby._id,player,roundId,neighbors,tasks[roundId])
+            }
 
-        })
+
+        });
+        //let everyone have the same startTime
+        Rounds.update({gameId:lobby._id,round:1},
+            {$set: {'initial.startTime':new Date()}},
+            {multi:true});
     },
 
     //General purpose document modification function for the round data
