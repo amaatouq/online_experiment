@@ -48,7 +48,11 @@ Meteor.methods({
                 if (roundId===1){
                     neighbors = getNeighbors(player,players,maxInDegree);
                 } else {
-                    neighbors = [];
+                    //this should be fixed for the dynamics case
+                    //neighbors = [];
+
+                    //this is for random neighbors everytime
+                    neighbors = getNeighbors(player,players,maxInDegree);
                 }
                 //add round data
                 insertUserRound(lobby._id,player,roundId,neighbors,tasks[roundId])
@@ -64,9 +68,9 @@ Meteor.methods({
 
     //General purpose document modification function for the round data
     'games.updateRoundInfo'(data,operation) {
-        console.log('I will update ',this.userId, ' with ',data);
         const game = Games.findOne({players:this.userId});
         if (operation === 'set') {
+            console.log('I will update ',this.userId, 'and round ',game.currentRound, ' with ',data);
             Rounds.update({userId : this.userId, round:game.currentRound}, {$set: data});
         } else if (operation === 'inc') {
             Rounds.update({userId : this.userId,round:game.currentRound}, {$inc: data});

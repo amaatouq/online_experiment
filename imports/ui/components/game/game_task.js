@@ -12,19 +12,15 @@ Template.game_task.onCreated(()=>{
 
     Meteor.autorun(()=>{
         const userRound = Rounds.findOne({userId: Meteor.userId(), round: game.currentRound});
-        console.log('the autorun for the guess');
         if (userRound){
             //if we are in the initial stage, check if there is an initial answer
             if (game.stage === 'initial') {
-                console.log('the initial guess is',userRound.initialAnswer);
-                if (userRound.initialAnswer){
-                    Session.setPersistent('sliderValue', userRound.initialAnswer);
-                } else {
-                    Session.setPersistent('sliderValue', null);
-                }
-                // if we are in the intractive stage
+                console.log('I am in initial',userRound.initialAnswer,Meteor.userId() )
+                Session.setPersistent('sliderValue', userRound.initialAnswer);
+                // else we are in the interactive stage
             } else {
                 //if in the interactive stage with no answer, then set the independent guess as the answer
+                // otherwise, the revised guess as the answer
                 if (userRound.interactiveAnswer===null){
                     Session.setPersistent('sliderValue', userRound.initialAnswer)
                 } else {
@@ -41,8 +37,8 @@ Template.game_task.onCreated(()=>{
 
 Template.game_task.onRendered(()=> {
 
+    //ensure the 'waiting for other players is activated if the user is ready
     const game = Games.findOne({players: Meteor.userId()});
-    console.log('game ', game);
     Meteor.autorun(() => {
         const userRound = Rounds.findOne({userId: Meteor.userId(), round: game.currentRound});
         if (game && userRound) {
@@ -57,33 +53,32 @@ Template.game_task.onRendered(()=> {
 
     /////// the slider stuff //////
     this.$("#slider").slider({
-        min: -0.0000,
+        min: 0,
         max: 1,
         step: 0.01,
         value: Session.get('sliderValue'),
+        //once created it, if there is no answer, then hide the default answer
         create: (event,ui)=>{
             //hide the default value if there is no answer yet
             if (Session.get('sliderValue') === null || Session.get('sliderValue') === undefined){
                 $('#slider > .ui-slider-handle').hide();
             }
         },
+        //on slide (continues) just show on the screen and show the default value
         slide: (event, ui)  => {
-            //on slide (continues) just show on the screen and show the default value
             $('#slider > .ui-slider-handle').show();
             Session.setPersistent('sliderValue',ui.value)
         },
+        //save value to collection for both conditions (to work after refresh)
         change: (event, ui)  => {
-            //save value to collection for both conditions (to work after refresh)
             if (game.stage === 'initial'){
-                Meteor.call('games.updateRoundInfo',{initialAnswer:ui.value});
+                Meteor.call('games.updateRoundInfo',{initialAnswer:ui.value},'set');
             } else {
-                Meteor.call('games.updateRoundInfo',{interactiveAnswer:ui.value});
+                Meteor.call('games.updateRoundInfo',{interactiveAnswer:ui.value},'set');
             }
 
         }
     });
-
-
 
 
 });

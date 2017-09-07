@@ -21,6 +21,18 @@ Template.game_page.onCreated(function() {
     this.subscribe('games.userGame');
 
 
+    this.autorun(()=>{
+        const game = Games.findOne({players:Meteor.userId()});
+        if (game){
+            console.log('subscribed to round');
+            //subscribe to the user data
+            this.subscribe('games.userRound', game.currentRound);
+            //subscribe to his neighbor's data
+            this.subscribe('games.userNeighbors', game.currentRound);
+        }
+    });
+
+
     //setup the regular pge stuff
     Session.setPersistent('page','game');
     if (Meteor.user()){
@@ -28,6 +40,8 @@ Template.game_page.onCreated(function() {
             Meteor.call('users.updateUserInfo',{page:'game'},'set');
         }
     }
+
+
 
     //check if the game finished
     this.autorun(()=>{
@@ -47,14 +61,6 @@ Template.game_page.onCreated(function() {
     });
 
 
-
-    this.autorun(()=>{
-        const game = Games.findOne({players:Meteor.userId()});
-        if (game){
-            console.log('subscribed to round');
-            this.subscribe('games.userRound', game.currentRound);
-        }
-    })
 
 });
 
@@ -88,14 +94,12 @@ Template.game_page.helpers({
     },
     InteractiveNeighbors(){
         //todo here you should get the rounds of the neigbhor which is a new subscription
-        //rather than just giving their names
-        const game = Games.findOne({players:Meteor.userId()});
-        if (game){
-            const userRound = Rounds.findOne({userId:Meteor.userId(),round:game.currentRound});
-            if (userRound){
-                return userRound.neighbors;
-            }
-        }
+        const game = Games.findOne({players:Meteor.userId()})
+        const userRounds = Rounds.findOne( { userId: Meteor.userId(), round:game.currentRound});
+        const neighborsData = Rounds.find({round:userRounds.round, userId: {$in : userRounds.neighbors}}).fetch();
+        console.log(neighborsData);
+        return neighborsData
+
     },
     allPlayers(){
         //todo here you should get the users of the game rather than only their name list

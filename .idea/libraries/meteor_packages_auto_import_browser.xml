@@ -239,6 +239,13 @@
         <item url="file://$USER_HOME$/.meteor/packages/rcy_nouislider/7.0.7_2/web.browser/packages/rcy:nouislider/lib/jquery.nouislider.pips.css" />
         <item url="file://$USER_HOME$/.meteor/packages/rcy_nouislider/7.0.7_2/web.browser/packages/rcy:nouislider.js" />
         <item url="file://$USER_HOME$/.meteor/packages/rcy_nouislider/7.0.7_2/web.browser/packages/rcy:nouislider/lib/jquery.nouislider.css" />
+        <item url="file://$USER_HOME$/.meteor/packages/reywood_publish-composite/1.5.2/web.browser/lib/published_document.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/reywood_publish-composite/1.5.2/web.browser/lib/published_document_list.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/reywood_publish-composite/1.5.2/web.browser/lib/subscription.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/reywood_publish-composite/1.5.2/web.browser/lib/doc_ref_counter.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/reywood_publish-composite/1.5.2/web.browser/lib/logging.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/reywood_publish-composite/1.5.2/web.browser/lib/publication.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/reywood_publish-composite/1.5.2/web.browser/lib/publish_composite.js" />
         <item url="file://$USER_HOME$/.meteor/packages/html-tools/1.0.11/web.browser/templatetag.js" />
         <item url="file://$USER_HOME$/.meteor/packages/html-tools/1.0.11/web.browser/tokenize.js" />
         <item url="file://$USER_HOME$/.meteor/packages/html-tools/1.0.11/web.browser/utils.js" />
@@ -760,6 +767,13 @@
       <root url="file://$USER_HOME$/.meteor/packages/rcy_nouislider/7.0.7_2/web.browser/packages/rcy:nouislider/lib/jquery.nouislider.pips.css" />
       <root url="file://$USER_HOME$/.meteor/packages/rcy_nouislider/7.0.7_2/web.browser/packages/rcy:nouislider.js" />
       <root url="file://$USER_HOME$/.meteor/packages/rcy_nouislider/7.0.7_2/web.browser/packages/rcy:nouislider/lib/jquery.nouislider.css" />
+      <root url="file://$USER_HOME$/.meteor/packages/reywood_publish-composite/1.5.2/web.browser/lib/published_document.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/reywood_publish-composite/1.5.2/web.browser/lib/published_document_list.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/reywood_publish-composite/1.5.2/web.browser/lib/subscription.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/reywood_publish-composite/1.5.2/web.browser/lib/doc_ref_counter.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/reywood_publish-composite/1.5.2/web.browser/lib/logging.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/reywood_publish-composite/1.5.2/web.browser/lib/publication.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/reywood_publish-composite/1.5.2/web.browser/lib/publish_composite.js" />
       <root url="file://$USER_HOME$/.meteor/packages/html-tools/1.0.11/web.browser/templatetag.js" />
       <root url="file://$USER_HOME$/.meteor/packages/html-tools/1.0.11/web.browser/tokenize.js" />
       <root url="file://$USER_HOME$/.meteor/packages/html-tools/1.0.11/web.browser/utils.js" />
