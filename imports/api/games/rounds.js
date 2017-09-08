@@ -84,6 +84,7 @@ export function insertUserRound(gameId,player,currentRound,neighbors,taskId) {
         ready:false,
         createTime: new Date(),
         taskId: taskId,
+        avatar: Meteor.users.findOne({_id:player}).avatar
         //add the difficulty, task path this will be queried from the Tasks collection
     });
 

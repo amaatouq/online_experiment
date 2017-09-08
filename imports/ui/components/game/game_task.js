@@ -15,7 +15,7 @@ Template.game_task.onCreated(()=>{
         if (userRound){
             //if we are in the initial stage, check if there is an initial answer
             if (game.stage === 'initial') {
-                console.log('I am in initial',userRound.initialAnswer,Meteor.userId() )
+                console.log('I am in initial of ',userRound.initialAnswer, ' with user ', Meteor.userId());
                 Session.setPersistent('sliderValue', userRound.initialAnswer);
                 // else we are in the interactive stage
             } else {
@@ -38,13 +38,14 @@ Template.game_task.onCreated(()=>{
 Template.game_task.onRendered(()=> {
 
     //ensure the 'waiting for other players is activated if the user is ready
-    const game = Games.findOne({players: Meteor.userId()});
     Meteor.autorun(() => {
+        const game = Games.findOne({players: Meteor.userId()});
         const userRound = Rounds.findOne({userId: Meteor.userId(), round: game.currentRound});
         if (game && userRound) {
             const isReady = (game.stage + '.ready').split('.').reduce((o, i) => o[i], userRound);
             console.log(isReady);
             if (isReady) {
+                console.log('I am ready in ',game.stage);
                 this.$('#contributionSubmit').text("Waiting for other players... ").removeClass('btn-primary').addClass('btn-warning').prop('disabled', true);
             }
         }
@@ -52,6 +53,7 @@ Template.game_task.onRendered(()=> {
 
 
     /////// the slider stuff //////
+    const game = Games.findOne({players: Meteor.userId()});
     this.$("#slider").slider({
         min: 0,
         max: 1,
@@ -106,9 +108,12 @@ Template.game_task.events({
         const currentStageReady = game.stage+'.ready';
         let data = {};
         data[currentStageReady]=true;
+        // if it is the initial stage, make the first revised submission the same as the initial
         if (game.stage === 'initial'){
             data['initialAnswer']= Session.get('sliderValue');
+            data['interactiveAnswer']=  Session.get('sliderValue');
         } else {
+            //if it is the interactive stage, just update the interactive
             data['interactiveAnswer']=  Session.get('sliderValue');
 
         }

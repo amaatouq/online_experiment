@@ -1,7 +1,27 @@
 <template name="game_interactiveNeighbors">
-    <ul>
-        {{#each InteractiveNeighbors}}
-            <li>{{this.interactiveAnswer}}</li>
-        {{/each}}
-    </ul>
+
+    <!-- Partner avatar and guess -->
+    <div class = "row">
+        <div class = "col-xs-2">
+            <h4 align =center style="white-space: nowrap;"><b>You are following:</b></h4>
+        </div>
+    </div>
+    <br>
+
+    {{#each InteractiveNeighbors}}
+        <div class = "row" id= "messageRow">
+            <div class = "col-xs-2">
+                <div class= "bubbleOther">
+                    <p class="message">{{this.interactiveAnswer}}</p>
+                    <div class = "bubbleTriangleOther"></div>
+                </div>
+            </div>
+            <div class = "col-xs-2" style = "font-size:20px">
+                <img src ='{{this.avatar}}' class='avatar-large'>
+                <hr>
+            </div>
+        </div>
+    {{/each}}
+
+
 </template>
