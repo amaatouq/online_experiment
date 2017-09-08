@@ -111,7 +111,6 @@ Template.game_task.events({
         // if it is the initial stage, make the first revised submission the same as the initial
         if (game.stage === 'initial'){
             data['initialAnswer']= Session.get('sliderValue');
-            data['interactiveAnswer']=  Session.get('sliderValue');
         } else {
             //if it is the interactive stage, just update the interactive
             data['interactiveAnswer']=  Session.get('sliderValue');
