@@ -96,6 +96,13 @@ Template.game_task.helpers({
             return String(sliderValue);
         }
     },
+    getTask(){
+        const game = Games.findOne({players: Meteor.userId()});
+        const userRound = Rounds.findOne({userId: Meteor.userId(), round: game.currentRound});
+        console.log(userRound.task);
+        return userRound.task
+
+    }
 
 });
 
@@ -104,6 +111,7 @@ Template.game_task.events({
     'click button' (event){
         event.preventDefault();
         $('#contributionSubmit').text("Waiting for other players... ").removeClass('btn-primary').addClass('btn-warning').prop('disabled',true);
+        //todo: disable the slider for this player, so they can't change their answers
         const game = Games.findOne( { players: Meteor.userId() });
         const currentStageReady = game.stage+'.ready';
         let data = {};

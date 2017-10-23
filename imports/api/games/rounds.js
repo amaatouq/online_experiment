@@ -19,7 +19,7 @@ Rounds.after.update((userId, round, fieldNames, modifier, options)=>{
     const stages = ['initial','interactive','roundOutcome'];
     //make sure we modified the stage ready and submitted an answer for that stage or it is roundoutcome
     if ((stages.includes(fieldNames[0]) && fieldNames[0]+'Answer' === fieldNames[1])
-        || fieldNames[0] == 'roundOutcome') {
+        || fieldNames[0] === 'roundOutcome') {
         const currentStage = fieldNames[0];
         const nextStage = nextStageName(currentStage);
         const game = Games.findOne({_id:round.gameId});
@@ -66,7 +66,7 @@ export function getNeighbors(player,players,maxInDegree) {
     return Array.from(neighbors);
 }
 
-export function insertUserRound(gameId,player,currentRound,neighbors,taskId) {
+export function insertUserRound(gameId,player,currentRound,neighbors,task) {
     Meteor.users.update({_id:player},{$set:{currentRound:currentRound}});
     Rounds.insert({
         gameId: gameId,
@@ -83,7 +83,7 @@ export function insertUserRound(gameId,player,currentRound,neighbors,taskId) {
         interactiveAnswer:null,
         ready:false,
         createTime: new Date(),
-        taskId: taskId,
+        task: task,
         avatar: Meteor.users.findOne({_id:player}).avatar
         //add the difficulty, task path this will be queried from the Tasks collection
     });

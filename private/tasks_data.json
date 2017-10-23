@@ -1,0 +1,12 @@
+[
+  {"_id":"1","task_path":"/tasks/1.png","correct_answer":0.1,"type":"easy"},
+  {"_id":"2","task_path":"/tasks/2.png","correct_answer":0.6,"type":"easy"},
+  {"_id":"3","task_path":"/tasks/3.png","correct_answer":0.3,"type":"easy"},
+  {"_id":"4","task_path":"/tasks/4.png","correct_answer":0.54,"type":"easy"},
+  {"_id":"5","task_path":"/tasks/5.png","correct_answer":0.1,"type":"easy"},
+  {"_id":"6","task_path":"/tasks/6.png","correct_answer":0.2,"type":"easy"},
+  {"_id":"7","task_path":"/tasks/7.png","correct_answer":0.8,"type":"easy"},
+  {"_id":"8","task_path":"/tasks/8.png","correct_answer":0.9,"type":"easy"},
+  {"_id":"9","task_path":"/tasks/9.png","correct_answer":1,"type":"easy"},
+  {"_id":"10","task_path":"/tasks/10.png","correct_answer":0.5,"type":"easy"}
+]

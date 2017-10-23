@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Games} from "./games";
 import {getNeighbors, insertUserRound, Rounds } from './rounds'
 import { Random } from 'meteor/random'
+import {Tasks} from "./tasks";
 
 Meteor.methods({
     'games.createGame'(lobby){
@@ -11,8 +12,8 @@ Meteor.methods({
         const icons = _.shuffle(AVATARS);
         const maxInDegree = (condition+'.N_CONNECTIONS').split('.').reduce((o, i) => o[i],CONDITIONS_SETTINGS);
         const totalRounds = (condition+'.N_ROUNDS').split('.').reduce((o, i) => o[i],CONDITIONS_SETTINGS);
-        //the stimuli should be randomized at the game level
-        const tasks = _.shuffle(TASKS);
+        //the number stimuli will be the same as the number of rounds and should be randomized at the game level
+        const tasks = _.shuffle(Tasks.find({}, {limit: N_ROUNDS+1}).fetch());
 
         Games.insert({
             _id: lobby._id,
