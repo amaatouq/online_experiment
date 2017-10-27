@@ -53,6 +53,7 @@ Template.game_task.onRendered(()=> {
 
 
     /////// the slider stuff //////
+    //todo: can we make this more 'meteor' than it is now?
     const game = Games.findOne({players: Meteor.userId()});
     this.$("#slider").slider({
         min: 0,

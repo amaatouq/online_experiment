@@ -12,7 +12,9 @@ Meteor.methods({
         const icons = _.shuffle(AVATARS);
         const maxInDegree = (condition+'.N_CONNECTIONS').split('.').reduce((o, i) => o[i],CONDITIONS_SETTINGS);
         const totalRounds = (condition+'.N_ROUNDS').split('.').reduce((o, i) => o[i],CONDITIONS_SETTINGS);
-        //the number stimuli will be the same as the number of rounds and should be randomized at the game level
+
+        //The Task that will be loaded from the database:
+        //the number tasks will be the same as the number of rounds and should be randomized at the game level
         const tasks = _.shuffle(Tasks.find({}, {limit: N_ROUNDS+1}).fetch());
 
         Games.insert({
@@ -78,7 +80,8 @@ Meteor.methods({
         } else if (operation === 'dec') {
             Rounds.update({userId : this.userId,round:game.currentRound}, {$dec: data});
         }
-    }
+    },
+
 
 });
 
