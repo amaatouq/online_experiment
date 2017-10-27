@@ -8,14 +8,6 @@ export const Rounds = new Mongo.Collection('rounds');
 //the stages we have in the game
 const stages = ['initial','interactive','roundOutcome'];
 
-//progress the game if everyone is ready
-//options are:
-// 1) there are people who are not ready => do nothing
-// 2) everyone is ready:
-//  a) if NOT round outcome then advance a stage and set them up to ready=false for this new stage
-//  b) if round outcome then:
-//      i) if this is the last round => end the game
-//      ii) if this is NOT the last round => advance 1 round
 Rounds.after.update((userId, round, fieldNames, modifier, options)=>{
     console.log('after update round:',round);
     console.log('fieldNames',fieldNames,'modf ',modifier,' options ',options);
@@ -25,12 +17,25 @@ Rounds.after.update((userId, round, fieldNames, modifier, options)=>{
     // and they are ready (whether initial or interactive stages)
 
     //check whether the user is ready
-    const isReady = accessNestedObject(currentStage+'.ready',round);
-    if (isReady){
+    const userIsReady = accessNestedObject(currentStage+'.ready',round);
+    if (userIsReady){
         //compute user score
         computeScores(currentStage,round,fieldNames);
         //check if we can progress the game to the next stage or next round
         gameProgress(round, fieldNames,currentStage);
+    }
+
+    //if we are in the roundoutcome update user information with the new scores for easy display
+    if (currentStage === 'roundOutcome'){
+        Meteor.users.update({_id:round.userId},
+            {
+                $inc:
+                    {
+                        cumulativeScore:round.cumulativeScore,
+                        bonus: round.cumulativeScore*BONUS_CONVERSION
+                    },
+                $set: {incrementScore:round.incrementScore},
+            })
     }
 
 
@@ -73,6 +78,14 @@ export function insertUserRound(gameId,player,currentRound,neighbors,task) {
 
 
 
+//progress the game if everyone is ready
+//options are:
+// 1) there are people who are not ready => do nothing
+// 2) everyone is ready:
+//  a) if NOT round outcome then advance a stage and set them up to ready=false for this new stage
+//  b) if round outcome then:
+//      i) if this is the last round => end the game
+//      ii) if this is NOT the last round => advance 1 round
 function gameProgress(round, fieldNames,currentStage){
     //make sure we modified the stage ready and submitted an answer for that stage or it is roundoutcome
     if ((stages.includes(currentStage) && currentStage+'Answer' === fieldNames[1])
@@ -133,6 +146,11 @@ function computeScores(currentStage,round,fieldNames){
             userAnswer = round.initialAnswer;
         } else {
             userAnswer = round.interactiveAnswer;
+            //if they do not have an answer in the interactive stage, use their initial answer
+            //to compute the score
+            if (!userAnswer){
+                userAnswer = round.initialAnswer;
+            }
         }
 
         //compute score function
@@ -145,16 +163,10 @@ function computeScores(currentStage,round,fieldNames){
                 $set: {incrementScore:score },
                 $inc: {cumulativeScore:score}
             });
-        //update user information for easy display (and convert their score to bonus)
-        Meteor.users.update({_id:round.userId},
-            {
-                $set: {incrementScore:score},
-                $inc: {cumulativeScore:score,bonus: score*BONUS_CONVERSION},
-            }
-        )
     }
 }
 
+//score function can be anything given a true answer and the user answer
 function scoreFunction(userAnswer,correctAnswer) {
-    return 1- Math.abs(correctAnswer-userAnswer).toFixed(2);
+    return (1 - Math.abs(parseFloat(correctAnswer-userAnswer))).toFixed(2);
 }
