@@ -168,5 +168,10 @@ function computeScores(currentStage,round,fieldNames){
 
 //score function can be anything given a true answer and the user answer
 function scoreFunction(userAnswer,correctAnswer) {
-    return (1 - Math.abs(parseFloat(correctAnswer-userAnswer))).toFixed(2);
+    const score = (1 - Math.abs(parseFloat(correctAnswer-userAnswer))).toFixed(2);
+    if (score){
+        return score
+    } else {
+        return 0
+    }
 }
