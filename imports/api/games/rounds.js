@@ -160,7 +160,7 @@ function computeScores(currentStage,round,fieldNames){
         //add the score for the round and the cumulative score as well
         Rounds.update({gameId:round.gameId,round:round.round,userId:round.userId},
             {
-                $set: {incrementScore:score },
+                $set: {incrementScore:score},
                 $inc: {cumulativeScore:score}
             });
     }
@@ -170,7 +170,7 @@ function computeScores(currentStage,round,fieldNames){
 function scoreFunction(userAnswer,correctAnswer) {
     const score = (1 - Math.abs(parseFloat(correctAnswer-userAnswer))).toFixed(2);
     if (score){
-        return score
+        return parseFloat(score);
     } else {
         return 0
     }
